@@ -9,3 +9,12 @@ performance is not affected by the users network connection.
 ## Under Development - 03/11/2022 #EP
 
 This is actively under development.
+
+## Contributors
+
+[Xandromus](https://www.github.com/Xandromus)
+> Built the base-content of the code as a starting point for the concept.
+
+[Erik Plachta](https://www.github.com/erikplachta)
+> Reviewed and then rebuilt all of the base content.
+
