@@ -1,0 +1,29 @@
+{
+  "name": "pwa-personal-budget",
+  "version": "0.1.0",
+  "description": "A Budget concept PWA demonstrating a seamless user experience no matter the users network connection. Hosted on Heroku, running a Node/express.js server, no SQL Database with MongoDB.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "watchdog",
+    "seed" : "node seeds/seed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ErikPlachta/pwa-personal-budget.git"
+  },
+  "author": "Erik plachta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ErikPlachta/pwa-personal-budget/issues"
+  },
+  "homepage": "https://github.com/ErikPlachta/pwa-personal-budget#readme",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "mongoose": "^5.5.15",
+    "morgan": "^1.9.1",
+    "watchdog": "^0.8.17"
+  }
+}

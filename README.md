@@ -17,4 +17,3 @@ This is actively under development.
 
 [Erik Plachta](https://www.github.com/erikplachta)
 > Reviewed and then rebuilt all of the base content.
-
