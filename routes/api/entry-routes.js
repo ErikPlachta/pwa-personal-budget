@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Entry = require("../models/entry.js");
+const Entry = require("./../../models/Entry.js");
 
 router.post("/api/entry", ({body}, res) => {
   Entry.create(body)

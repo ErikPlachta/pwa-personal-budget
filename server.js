@@ -1,29 +1,28 @@
-const express = require('express');
-const { mongoose } = require('./config/connection');
-// const {mongoose, sequelize, db} = require('./config/connection');
-// const hbs = require ('./config/handlebars');
-const routes = require('./routes');
+const express = require("express");
+const logger = require("morgan");
+const mongoose = require("mongoose");
+const compression = require("compression");
+
+const PORT = process.env.PORT || 3001;
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/personal-budget";
 
 const app = express();
-const PORT = process.env.PORT || 3001;
 
-//-- onboarding Handlebars
-// app.engine('handlebars', hbs.engine);
-// app.set('view engine', 'handlebars');
+//-- prints details to log of what's happening
+app.use(logger("dev"));
 
-app.use(express.json());
+app.use(compression());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
+app.use(express.json());
 
-// Use this to log mongo queries being executed
-mongoose.set('debug', true);
+app.use(express.static("public"));
 
-app.use(routes);
-
-// //-- Use existing tables if exist, start connection to express and SQL
-sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log(`Now listening on http://127.0.0.1:${PORT}`));
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+  useFindAndModify: false
 });
 
-// Use this to log mongo queries being executed!
-// app.listen(PORT, () => console.log(`🌍 Connected on localhost:${PORT}`));
+// routes
+app.use(require("./routes/api"));
+
+app.listen(PORT, () => console.log(`Now listening on http://127.0.0.1:${PORT}`));

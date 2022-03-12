@@ -21,7 +21,7 @@ router.use((req, res) => {
             },
             response: {
                 status: 404,
-                message: "Rquest failure. Page not found."
+                message: "Request failure. Page not found."
             }
     }).end();
     
