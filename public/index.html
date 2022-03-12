@@ -9,8 +9,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#317EFB">
     
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="./assets/js/script.js"></script>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
     <title>Document</title>
 </head>
 <body>
@@ -20,9 +21,18 @@
   </header>
   <main>
 
+    <section id="user-form"></section>
+    <section id="user-chart">
+      <canvas id="myChart" width="400" height="100"></canvas>
+    </section>
   </main>  
 
-
+  <script>
+    
+  </script>
+<script>
+  
+</script>
     <!-- Onboard Service Worker -->
     <script>
         (function() {
@@ -33,6 +43,8 @@
               .catch(error => console.log("Service Worker registration failed:", error));
           }
         })();
-      </script>
-</body>
+    </script>
+    
+  </body>
+  <script src="./assets/js/script.js"></script>
 </html>
