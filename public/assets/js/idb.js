@@ -1,8 +1,12 @@
+const APP_PREFIX = 'pwa-personal-budget-';     
+const VERSION = 'version_0.1.0';
+const INDEX_DB_CACHE = APP_PREFIX + VERSION;
+
 // create variable to hold db connection
 let db;
 
 // establish a connection to IndexedDB database called 'personal-budget-pwa' and set it to version 1
-const request = indexedDB.open('personal-budget-pwa', 1);
+const request = indexedDB.open(INDEX_DB_CACHE, 1);
 
 // upon a successful 
 request.onsuccess = function(event) {
@@ -55,7 +59,7 @@ function uploadEntry() {
     getAll.onsuccess = function() {
       // if there was data in indexedDb's store, let's send it to the api server
       if (getAll.result.length > 0) {
-        fetch('/api/entries', {
+        fetch('/api/entries/bulk', {
           method: 'POST',
           body: JSON.stringify(getAll.result),
           headers: {
