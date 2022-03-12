@@ -2,7 +2,7 @@
 const APP_PREFIX = 'pwa-personal-budget-';     
 const VERSION = 'version_0.1.0';
 const SITE_CACHE = APP_PREFIX + VERSION;
-const DATA_CACHE = 'data-cache-v2'
+// const DATA_CACHE = 'data-cache-v2'
 const FILES_TO_CACHE = [
     "/index.html",
     "/assets/css/style.css",

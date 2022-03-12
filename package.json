@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "watch": "watchdog",
-    "seed": "node seeds/seed",
+    "watch": "nodemon server.js",
+    "seed": "node seeds/seed.js",
     "dev": "lite-server"
   },
   "repository": {
@@ -29,6 +29,6 @@
   },
   "devDependencies": {
     "lite-server": "^2.6.1",
-    "watchdog": "^0.8.17"
+    "nodemon": "^2.0.15"
   }
 }
