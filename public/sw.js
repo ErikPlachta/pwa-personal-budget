@@ -2,7 +2,7 @@
 const APP_PREFIX = 'pwa-personal-budget-';     
 const VERSION = 'version_0.1.0';
 const SITE_CACHE = APP_PREFIX + VERSION;
-// const DATA_CACHE = 'data-cache-v2'
+const DATA_CACHE = APP_PREFIX + "DATA_" + VERSION
 const FILES_TO_CACHE = [
     "/",
     "./index.html",
@@ -29,31 +29,22 @@ self.addEventListener('install', function (e) {
 
 })
 
-//-- Start the Service Worker
-self.addEventListener('activate', function (e) {
-    e.waitUntil(
-        //-- returns an array of all cache names
-        caches.keys().then(function (keyList) {
-            //-- filter out just names with the value of const APP_PREFIX ( above )
-            let cacheKeeplist = keyList.filter(function (key) {
-                return key.indexOf(APP_PREFIX);
-            })
-            
-            cacheKeeplist.push(SITE_CACHE);
-            
-            //- returns a Promise that resolves once all old versions of the cache have been deleted.
+self.addEventListener('activate', function(evt){
+    evt.waitUntil(
+        caches.keys().then(keyList => {
             return Promise.all(
-                keyList.map(function (key, i) {
-                    if (cacheKeeplist.indexOf(key) === -1) {
-                        console.log(`//-- sw.js -> ${keyList[i]} deleted.`)
-                        return caches.delete(keyList[i]);
+                keyList.map( key => {
+                    if (key !== SITE_CACHE && key !== DATA_CACHE) {
+                        console.log(`Removing old cache data ${key}`);
+                        return caches.delete(key);
                     }
                 })
-            );
+            )
         })
-    );
+    )
+    // ??
+    self.clients.claim();
 });
-
 
 
 self.addEventListener('fetch', function(evt) {

@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Entry = require("./../../models/Entry.js");
 
-router.post("/api/entries", ({body}, res) => {
+router.post("/api/entry", ({body}, res) => {
   Entry.create(body)
     .then(dbEntry => {
       res.json(dbEntry);
