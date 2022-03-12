@@ -2,3 +2,4 @@ node_modules
 _ARCHIVE
 package-lock.json
 pwa-personal-budget.code-workspace
+.env

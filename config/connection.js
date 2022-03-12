@@ -9,8 +9,8 @@ const mongoose = require("mongoose");
 
 
 //-- MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/social-network-api', {
-  // useFindAndModify: false,
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/personal-budget', {
+  useFindAndModify: false,
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
