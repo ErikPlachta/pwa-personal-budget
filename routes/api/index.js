@@ -6,7 +6,7 @@ const entryRoutes = require('./entry-routes');
 
 //------------------------------------------------------------------------------
 //-- Routing
-router.use('/entries', entryRoutes);
+router.use('/entry', entryRoutes);
 
 //-- if gets here when rounting, throw 404
 router.use((req, res) => {

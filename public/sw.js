@@ -4,10 +4,11 @@ const VERSION = 'version_0.1.0';
 const SITE_CACHE = APP_PREFIX + VERSION;
 // const DATA_CACHE = 'data-cache-v2'
 const FILES_TO_CACHE = [
-    "/index.html",
-    "/assets/css/style.css",
-    "/assets/js/chart.js",
-    "/assets/js/idb.js",
+    // "/",
+    "./index.html",
+    "./assets/css/style.css",
+    "./assets/js/chart.js",
+    "./assets/js/idb.js",
 ];  
 
 
@@ -25,6 +26,7 @@ self.addEventListener('install', function (e) {
           return cache.addAll(FILES_TO_CACHE)
         })
     )
+
 })
 
 //-- Start the Service Worker
@@ -53,101 +55,45 @@ self.addEventListener('activate', function (e) {
 });
 
 
-//-- Listen for Fetch Events
-    //-- Listen for the fetch event, log the URL of the requested resource,
-    //--    and then begin to define how we will respond to the request.
-self.addEventListener('fetch', function (e) {
-    console.log('fetch request : ' + e.request.url)
-    e.respondWith(
-        caches.match(e.request).then(function (request) {
-        if (request) { // if cache is available, respond with cache
-            console.log(`//-- sw.js -> Responding with cache: ${e.request.url} `)
-            return request
-        } else {       // if there are no cache, try fetching request
-            console.log(`//-- sw.js -> Not in Cache, fetching file: ${e.request.url} `)
-            return fetch(e.request)
-        }
-    
-        //TODO:: omit if/else for console.log & put one line below like this too.
-        // return request || fetch(e.request)
-        })
-    )
-})
 
-
-// self.addEventListener('install', function(e){
-//     //-- Review the cached files and verify service-worker is up to date
-//     e.waitUntil(
-//         caches.open(SITE_CACHE)
-//             .then( cache => {
-//                 //-- TODO:: 03/12`aq1qa
-//                 console.log("TRUE, Cache success.")
-//                 return (cache.addAll(FILES_TO_CACHE))
-//             })
-//     )
-//     console.log("//-- sw.js: Service Worker INSTALLED")
-// })
-
-// self.addEventListener('activate', function(e){
-//     e.waitUntil(
-//         caches.keys().then(keyList => {
-//             return Promise.all(
-//                 keyList.map( key => {
-//                     if (key !== SITE_CACHE && key !== DATA_CACHE) {
-//                         console.log(`Removing old cache data ${key}`);
-//                         return caches.delete(key);
-//                     }
-//                 })
-//             )
-//         })
-//     )
-//     // ??
-//     console.log("//-- sw.js: Service Worker ACTIVATED")
-//     self.clients.claim();
-// })
-
-// self.addEventListener('fetch', function(evt) {
-//     if (evt.request.url.includes('/api/')) {
-//         evt.respondWith(
-//           caches
-//             .open(DATA_CACHE)
-//             .then(cache => {
-//               return fetch(evt.request)
-//                 .then(response => {
-//                   // If the response was good, clone it and store it in the cache.
-//                   if (response.status === 200) {
-//                     cache.put(evt.request.url, response.clone());
-//                   }
+self.addEventListener('fetch', function(evt) {
+    if (evt.request.url.includes('/api/')) {
+        evt.respondWith(
+          caches
+            .open(DATA_CACHE)
+            .then(cache => {
+              return fetch(evt.request)
+                .then(response => {
+                  // If the response was good, clone it and store it in the cache.
+                  if (response.status === 200) {
+                    cache.put(evt.request.url, response.clone());
+                  }
       
-//                   return response;
-//                 })
-//                 .catch(err => {
-//                   // Network request failed, try to get it from the cache.
-//                   return cache.match(evt.request);
-//                 });
-//             })
-//             .catch(err => console.log(err))
-//         );
+                  return response;
+                })
+                .catch(err => {
+                  // Network request failed, try to get it from the cache.
+                  return cache.match(evt.request);
+                });
+            })
+            .catch(err => console.log(err))
+        );
       
-//         return;
-//       }
+        return;
+      }
 
-//     else{
-//       evt.respondWith(
-//         fetch(evt.request).catch(function() {
-//             return caches.match(evt.request).then(function(response) {
-//                 if (response) {
-//                     return response;
-//                 } else if (evt.request.headers.get('accept').includes('text/html')) {
-//                     // return the cached home page for all requests for html pages
-//                     return caches.match('/');
-//                 }
-//                 });
-//             })
-//         );
-//     }
-
-//     console.log("//-- sw.js: Service Worker FETCH EVENT")
-// });
-
-
+    else{
+      evt.respondWith(
+        fetch(evt.request).catch(function() {
+            return caches.match(evt.request).then(function(response) {
+                if (response) {
+                    return response;
+                } else if (evt.request.headers.get('accept').includes('text/html')) {
+                    // return the cached home page for all requests for html pages
+                    return caches.match('/');
+                }
+                });
+            })
+        );
+    }
+});
