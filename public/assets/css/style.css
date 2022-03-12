@@ -64,8 +64,12 @@ input[type="checkbox"].toggle + label::after {
     box-shadow: 0.25px 0px .75px rgba(0,0,0,.5);
 }
 
-/* The container HOVERED */
-input[type="checkbox"].toggle:focus + label::before,
+/* The container FOCUSED */
+input[type="checkbox"].toggle:focus + label::before{
+  box-shadow: inset 0px 0px 1px rgba(0,0,0,.5);  
+  
+}
+
 input[type="checkbox"].toggle:hover + label::before{
     box-shadow: inset 0px 0px .9px rgba(0,0,0,.5);
 }
