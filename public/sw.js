@@ -1,10 +1,8 @@
 
 const APP_PREFIX = 'pwa-personal-budget-';     
-const VERSION = 'version_0.1';
-const CACHE_NAME = APP_PREFIX + VERSION;
-
-
-const SITE_CACHE = 'my-site-cache-v2'
+const VERSION = 'version_0.1.0';
+// const CACHE_NAME = APP_PREFIX + VERSION; //-- used for old version
+const SITE_CACHE = APP_PREFIX + VERSION;
 const DATA_CACHE = 'data-cache-v2'
 const FILES_TO_CACHE = [
     "./index.html",
@@ -14,9 +12,11 @@ const FILES_TO_CACHE = [
 ];  
 
 self.addEventListener('install', function(e){
+    //-- Review the cached files and verify service-worker is up to date
     e.waitUntil(
         caches.open(SITE_CACHE)
             .then( cache => {
+                //-- TODO:: 03/12`aq1qa
                 console.log("TRUE, Cache success.")
                 return (cache.addAll(FILES_TO_CACHE))
             })
