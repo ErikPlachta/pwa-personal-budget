@@ -4,17 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- TODO:: 03/11/2022 #EP || Add PWA Meta -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#317EFB">
+    
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="./assets/js/script.js"></script>
     <title>Document</title>
-
-    <!-- Onboard Service Worker -->
-    <script src="./assets/js/script.js" ></script>
 </head>
 <body>
-    
+  <header>
+    <h1>Title</h1>
+    <nav></nav>  
+  </header>
+  <main>
+
+  </main>  
+
+
+    <!-- Onboard Service Worker -->
     <script>
         (function() {
           if("serviceWorker" in navigator) { // see if serviceWorker exists on the global navigator object.
-            navigator.serviceWorker.register("./service-worker.js")
+            navigator.serviceWorker.register("./sw.js")
+              //-- TODO:: 03/12/2022 #EP || Remove console.logs and make UI interace instead
               .then(() => console.log("Service Worker registered successfully."))
               .catch(error => console.log("Service Worker registration failed:", error));
           }
