@@ -14,8 +14,7 @@ main {
 
 .checkboxes {
     width: 10%;
-    
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 /* Hide input off-screen */
@@ -65,15 +64,15 @@ input[type="checkbox"].toggle + label::after {
     box-shadow: 0.25px 0px .75px rgba(0,0,0,.5);
 }
 
-/* The cirlce HOVERED */
+/* The container HOVERED */
 input[type="checkbox"].toggle:focus + label::before,
 input[type="checkbox"].toggle:hover + label::before{
     box-shadow: inset 0px 0px .9px rgba(0,0,0,.5);
 }
 
-/* The container around circle HOVERED */
+/* The circle HOVERED */
 input[type="checkbox"].toggle:hover + label::after{
-    box-shadow: 0px 0px .9px rgba(0,0,0,.5);
+    box-shadow: 0px 0px 1px rgba(0,0,0,1);
 }
 
 /* The container around circle */
