@@ -5,14 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="theme-color" content="#317EFB">
-  <link rel="shortcut icon" href="./assets/img/icons/icon-192x192.png" type="image/x-icon">
-  
-  <link rel="stylesheet" href="./assets/css/style.css">
-    
-  <script src="./assets/js/idb.js"></script> <!-- for loading offline content if needed -->
-  
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="shortcut icon" href="icons/icon-192x192.png" type="image/x-icon">
 
+  <script src="js/idb.js"></script> <!-- for loading offline content if needed -->
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/styles.css">
 
   <title>Budget Tracker</title>
 </head>
@@ -46,18 +44,16 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-  <script src="./assets/js/entry.js"></script>
-      <!-- Onboard Service Worker -->
-      <script>
-        (function() {
-          if("serviceWorker" in navigator) { // see if serviceWorker exists on the global navigator object.
-            navigator.serviceWorker.register("./sw.js")
-              //-- TODO:: 03/12/2022 #EP || Remove console.logs and make UI interace instead
-              .then(() => console.log("//-- index.html - Service Worker registered successfully."))
-              .catch(error => console.log("//-- index.html - Service Worker registration failed:", error));
-          }
-        })();
-    </script>
-    
+  <script src="js/index.js"></script>
+  <script>
+    (function() {
+      if("serviceWorker" in navigator) { // see if serviceWorker exists on the global navigator object.
+        navigator.serviceWorker.register("./sw.js")
+          //-- TODO:: 03/12/2022 #EP || Remove console.logs and make UI interace instead
+          .then(() => console.log("//-- index.html - Service Worker registered successfully."))
+          .catch(error => console.log("//-- index.html - Service Worker registration failed:", error));
+      }
+    })();
+</script>
 </body>
 </html>

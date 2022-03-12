@@ -1,36 +1,35 @@
-
-const APP_PREFIX = 'pwa-personal-budget-';     
-const VERSION = 'version_0.1.0';
-const SITE_CACHE = APP_PREFIX + VERSION;
-const DATA_CACHE = APP_PREFIX + "DATA_" + VERSION
+const SITE_CACHE = 'my-site-cache-v2'
+const DATA_CACHE = 'data-cache-v2'
 const FILES_TO_CACHE = [
-    "/",
-    "./index.html",
-    "./assets/css/style.css",
-    "./assets/js/chart.js",
-    "./assets/js/idb.js",
-];  
+    '/',
+    '/index.html',
+    '/manifest.json',
+    '/css/styles.css',
+    '/js/idb.js',
+    '/js/index.js',
+    '/icons/icon-72x72.png',
+    '/icons/icon-96x96.png',
+    '/icons/icon-128x128.png',
+    '/icons/icon-144x144.png',
+    '/icons/icon-152x152.png',
+    '/icons/icon-192x192.png',
+    '/icons/icon-384x384.png',
+    '/icons/icon-512x512.png',
+];
 
 
-/* -- Install the Service Worker and manage FILES_TO_CACHE
-        -- If anything changed within the above cached files or they're not yet
-            cached, install them.
-*/
-self.addEventListener('install', function (e) {
-    // tell the browser to wait until the work is complete before terminating the service worker. 
-        // This ensures that the service worker doesn't move on from the installing phase until
-        // it's finished executing all of its code.
-    e.waitUntil( 
-        caches.open(SITE_CACHE).then(function (cache) {
-          console.log(`//-- sw.js -> ${SITE_CACHE} installed`)
-          return cache.addAll(FILES_TO_CACHE)
-        })
+self.addEventListener('install', function(e){
+    e.waitUntil(
+        caches.open(SITE_CACHE)
+            .then( cache => {
+                console.log("TRUE, Cache success.")
+                return (cache.addAll(FILES_TO_CACHE))
+            })
     )
-
 })
 
-self.addEventListener('activate', function(evt){
-    evt.waitUntil(
+self.addEventListener('activate', function(e){
+    e.waitUntil(
         caches.keys().then(keyList => {
             return Promise.all(
                 keyList.map( key => {
@@ -44,8 +43,7 @@ self.addEventListener('activate', function(evt){
     )
     // ??
     self.clients.claim();
-});
-
+})
 
 self.addEventListener('fetch', function(evt) {
     if (evt.request.url.includes('/api/')) {
