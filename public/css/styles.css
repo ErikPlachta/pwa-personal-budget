@@ -22,7 +22,7 @@
 }
 
 * {
-  /* Account for parent element pading. ( Keeps elements from overflowing containers) */
+  /* Keeps elements from overflowing containers */
   box-sizing: border-box;
 }
 
@@ -34,7 +34,6 @@ body {
     
   /* Prevents cursor from changing from arrow unless explicit */
   cursor: default;
-
 }
 
 main {
@@ -45,7 +44,7 @@ main {
 
 button, input {
   font-size: 100%;
-  font-family: Arial;
+  
 }
 
 table {
@@ -53,7 +52,7 @@ table {
 }
 
 td, th {
-  border: 1px solid #dddddd;
+  /* border: 1px solid #dddddd; */
   text-align: left;
   padding: 8px;
 }
@@ -65,7 +64,7 @@ tr:nth-child(even) {
 .message{
   position: absolute;
   top: 0;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 100%;
   margin: 0;
   padding: 0;
@@ -91,9 +90,19 @@ tr:nth-child(even) {
 
 .transactions {
   text-align: left;
-  max-height: 300px;
+  min-height: 300px;
   overflow: auto;
   width: 90%;
   margin: 0 auto;
 }
 
+
+/*                     MEDIA QUERIES                     */
+
+@media screen and (max-width: 450px){
+  /* CONTACT */
+  a button.contact { 
+      /* puts on each row */
+      padding: 3rem 2rem;   
+  }
+}
