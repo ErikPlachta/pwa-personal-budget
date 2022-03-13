@@ -1,9 +1,9 @@
 {
-    "name" : "Personal Budget PWA",
+    "name" : "Budget Tracker PWA",
     "short_name" : "PB",
-    "description" : "A PWA Concept App by Erik Plachta",
+    "description" : "A Budget Tracker PWA Concept App by Erik Plachta",
     "scope" : "/index.html",
-    "id" : "Personal-Budget-PWA",
+    "id" : "Budget-Tracker-PWA",
     "background_color" : "#E9E9EB",
     "theme_color" : "#222222",
     "start_url" : "/index.html",

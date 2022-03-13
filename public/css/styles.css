@@ -1,27 +1,32 @@
 :root {
-  --color_Primary: #172a35;
-  --color_title: #fefdff;
-  --font_title: #0b132b;
+  --color_Primary: rgb(0, 123, 176);
+  --color_Secondary: #1AC0A5;
+  --color_Tertiary: #FFFFFF; 
+  
+  --header_font: #fefdff;
+  --header_background: #0b132b;
   /* Backgrounds */
   --bg_Body: #F9F9F9; /* A very light shade of white gray */    
   --bg_Section: #fefdff; /* A variation of white gray  */
   /* Buttons */
-  --btn_txt_inactive: #F9F9F9;
-  --btn_txt_active: #6fffe9;
-  /* Accent Colors */
-  --accent_Primary: #4ed1c4;
-  /* Borders and Shadows */
-  --boxShadow: 0 -.5rem .5rem rgba(0,0,0,.25); /* offset-x | offset-y | blur-radius | color */
-  --boxShadow_Hover_top_black: 0 -1rem 1rem rgba(0,0,0,.5); /* offset-x | offset-y | blur-radius | color */
-  --boxShadow_bottom_accent_Primary: 0 .05rem .5rem var(--color_Primary); /* offset-x | offset-y | blur-radius | color */
-  --boxShadow_Hover_top_heavy_bottom_light: 0rem -.4rem 1rem rgba(0,0,0,.5); /* offset-x | offset-y | blur-radius | color */
   
+  --ff-body: 'Roboto', sans-serif;
+  --ff-heading: "Oswald", sans-serif;
 
-  --shadow_025_black:  rgba(0,0,0,.25);
-  --shadow_1px_25a: 2px solid var(--shadow_025_black);
+  /* --fs-xl: 5rem; */
+  --fs-xl: clamp(3.5rem, 7vw + 1rem, 7rem);
+  --fs-600: 1.5rem;
+  --fw-600: 600;
+  --fs-400: 1rem;
+  --fw-400: 400;
+  --fw-300: 300;
+
 }
 
-* {
+
+*,
+*::before
+*::after {
   /* Keeps elements from overflowing containers */
   box-sizing: border-box;
 }
@@ -30,11 +35,51 @@ body {
   margin: 0; padding: 0;
   width: 100%;
   background-color: var(--bg_Body);
-  font-family: Roboto, Arial, sans-serif;
-    
+  font-family: var(--ff-body);
+  font-size: var(--fs-400);
   /* Prevents cursor from changing from arrow unless explicit */
   cursor: default;
+  line-height: 1.6;
 }
+
+header{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--header_background);
+  color: var(--header_font)
+}
+
+h1{
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-400);
+  padding: 0;
+  margin: 0 auto;
+}
+
+nav{}
+
+/* @media (min-width: 20em){
+  :root {
+    --fs-xl: 4rem;
+    --fs-600: 2rem;
+    --fs-400: 1.25rem;
+  
+  }
+}
+
+@media (min-width: 40em){
+  :root {
+    --fs-xl: 5rem;
+    --fs-600: 2rem;
+    --fs-400: 1.25rem;
+  
+  }
+} */
+
+
+
+
 
 main {
   margin: auto;
@@ -42,24 +87,10 @@ main {
   text-align: center;
 }
 
-button, input {
-  font-size: 100%;
-  
+.chart {
+  display: none;
 }
 
-table {
-  width: 100%;
-}
-
-td, th {
-  /* border: 1px solid #dddddd; */
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
 
 .message{
   position: absolute;
@@ -88,6 +119,41 @@ tr:nth-child(even) {
   width: 100%;
 }
 
+button, input {
+  font-size: 100%;
+  
+}
+
+table {
+  padding-top: 1rem;
+  width: 100%;
+  table-layout: auto;
+  border-collapse:collapse;
+
+}
+
+td, th {
+  border-bottom: 1px solid rgba(0,0,0,.25);
+  border-collapse:collapse;
+  text-align: left;
+  /* padding-bottom: .125rem; */
+  text-align: center;
+}
+
+th {
+  /* background-color: var(--color_Primary);
+  color: var(--color_Secondary); */
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
+tr:nth-child(even) {
+  background-color: #fff;
+}
+tr:nth-child(odd) {
+  background-color: #fefefe;
+}
+
 .transactions {
   text-align: left;
   min-height: 300px;
@@ -99,10 +165,32 @@ tr:nth-child(even) {
 
 /*                     MEDIA QUERIES                     */
 
-@media screen and (max-width: 450px){
-  /* CONTACT */
-  a button.contact { 
-      /* puts on each row */
-      padding: 3rem 2rem;   
+/* @media screen and (min-width: 1920x){
+  
+}
+
+
+@media screen and (min-width: 1024px){
+  
+}
+
+@media screen and (min-width: 800px){
+  h1{
+    font-size: 5rem;
   }
 }
+
+@media screen and (min-width: 500px){
+  h1{
+    font-size: 4rem;
+  } 
+} */
+
+/* @media (min-width: 40em){
+  :root {
+    --fs-xl: 7rem;
+    --fs-600: 2rem;
+    --fs-400: 1.25rem;
+  
+  }
+} */

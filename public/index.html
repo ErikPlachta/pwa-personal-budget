@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
-  <title>Personal Budget - PWA - Erik Plachta</title>
+  <title>Budget Tracker - PWA - Erik Plachta</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="icon" type="image/png" href="icons/favicon-16x16.png">
   
@@ -21,9 +21,23 @@
 </head>
 <body>
 
+  <header>
+    <h1>Budget Tracker</h1>
+    <nav>
+
+    </nav>
+
+  </header>
+
   <main>
+
+    <section class="chart">
+      <canvas id="myChart"></canvas>
+    </section>
+    
     <div class="total">
       <div class="total">Balance: $<span id="total">0</span></div>
+      <button id="clear-btn"><i class="fa fa-trash buttons"></i>Clear Balance</button>
     </div>
 
     <div class="form">

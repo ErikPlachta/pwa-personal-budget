@@ -58,8 +58,14 @@ function populateTable() {
   tbody.innerHTML = "";
 
   transactions.forEach(transaction => {
+    
     let transactionType;
     if(transaction.value > 0 ){ transactionType = 'Deposit' }
+    if(transaction.value < 0 ){ transactionType = 'Withdraw' }
+    if(transaction.value === 0 ){ transactionType = 'Note' }
+
+
+    if(transaction.value > 0 ){ transaction.value = transaction.value }
     if(transaction.value < 0 ){ transactionType = 'Withdraw' }
     if(transaction.value === 0 ){ transactionType = 'Note' }
 
@@ -68,7 +74,7 @@ function populateTable() {
     tr.innerHTML = `
       <td>${transaction.name}</td>
       <td>${transactionType}</td>
-      <td>${transaction.value}</td>
+      <td>$ ${transaction.value}</td>
       <td>${get_DateTimeFormatted(transaction.date)}</td>
       <td>${get_TimePassed(transaction.date)}</td>
     `;

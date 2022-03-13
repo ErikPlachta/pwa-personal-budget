@@ -1,6 +1,6 @@
-const SITE_CACHE_PREFACE = "pb-site-cache"
-const DATA_CACHE_PREFACE = "pb-data-cache"
-const VERSION = "-v_0.1.0"
+const SITE_CACHE_PREFACE = "bt-site-cache"
+const DATA_CACHE_PREFACE = "bt-data-cache"
+const VERSION = "-v_1.0.0"
 const SITE_CACHE_NAME = SITE_CACHE_PREFACE + VERSION
 const DATA_CACHE_NAME = DATA_CACHE_PREFACE + VERSION
 
