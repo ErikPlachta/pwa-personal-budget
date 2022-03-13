@@ -77,7 +77,9 @@ function sendTransaction(isAdding) {
 
   // if subtracting funds, convert amount to negative number
   if (!isAdding) {
-    transaction.value *= -1;
+    //-- gaurntees it's negative number coming in no matter what's in UI
+    transaction.value = -Math.abs(transaction.value)
+    // transaction.value *= -1;
   }
 
   // add to beginning of current array of data
