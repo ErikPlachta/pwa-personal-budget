@@ -1,8 +1,9 @@
 {
     "name" : "Personal Budget PWA",
     "short_name" : "Personal-Budget",
-    "description": "demonstrate how using a PWA and Service Workers can be used in-hand with a Node/Express.js server to build a seamless user experience where performance is not affected by the users network connection.",
-    "start_url" : "./index.html",
+    "icons": [],
     "theme_color" : "#222222",
-    "background_color" : "#E9E9EB"
+    "background_color" : "#E9E9EB",
+    "start_url" : "/",
+    "display": "standalone"
 }
