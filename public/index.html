@@ -2,19 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-  <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
-  <!-- <meta name="theme-color" content="#317EFB"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Budget Tracker</title>
   <!-- <link rel="shortcut icon" href="icons/icon-192x192.png" type="image/x-icon"> -->
-  <link rel="manifest" href="manifest.json"> <!-- onboarding pwa -->
+  
+  <!-- Manifest File link -->
+  <link rel="manifest" href="manifest.json">
+
   <script src="js/idb.js"></script> <!-- for loading offline content if needed -->
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/styles.css">
-
-  <!-- ONBOARIND PWA! -->
-
+  
+  
 </head>
 <body>
   <div class="wrapper">
@@ -50,7 +51,7 @@
   <script>
     (function() {
       if("serviceWorker" in navigator) { // see if serviceWorker exists on the global navigator object.
-        navigator.serviceWorker.register("./sw.js")
+        await navigator.serviceWorker.register("./sw.js")
           //-- TODO:: 03/12/2022 #EP || Remove console.logs and make UI interace instead
           .then(() => console.log("//-- index.html - Service Worker registered successfully."))
           .catch(error => console.log("//-- index.html - Service Worker registration failed:", error));
