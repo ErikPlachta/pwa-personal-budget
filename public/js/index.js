@@ -24,7 +24,23 @@ fetch("/api/transaction")
     // populateTotal();
     // populateTable();
     // populateChart();
-  });
+});
+
+function updateForm(results) {
+  
+  if(results.value > 0){
+    console.log(results.value)
+  }
+  
+  // let nameEl = document.querySelector("#t-name");
+  // let amountEl = document.querySelector("#t-amount");
+  // let errorEl = document.querySelector(".form .error");
+  // clear form
+  document.querySelector("#t-name").value = "";
+  document.querySelector("#t-amount").value = "";
+  document.querySelector(".form .error").value = "";
+  
+}
 
 function populateTotal() {
   // reduce transaction amounts to a single total value
@@ -78,17 +94,17 @@ function sendTransaction(isAdding) {
   // if subtracting funds, convert amount to negative number
   if (!isAdding) {
     //-- gaurntees it's negative number coming in no matter what's in UI
-    transaction.value = -Math.abs(transaction.value)
-    // transaction.value *= -1;
+    transaction.value = -Math.abs(transaction.value);
   }
 
   // add to beginning of current array of data
   transactions.unshift(transaction);
-
-  // re-run logic to populate ui with new record
-  updateUI();
   
-  // also send to server
+  
+  //-- add update to UI
+  updateUI();
+
+  //-- Send to server
   fetch("/api/transaction", {
     method: "POST",
     body: JSON.stringify(transaction),
@@ -106,17 +122,14 @@ function sendTransaction(isAdding) {
     }
     else {
       // clear form
-      nameEl.value = "";
-      amountEl.value = "";
+      updateForm(data);
     }
   })
   .catch(err => {
     // fetch failed, so save in indexed db
     saveRecord(transaction);
-
     // clear form
-    nameEl.value = "";
-    amountEl.value = "";
+    updateForm(err);
   });
 }
 
