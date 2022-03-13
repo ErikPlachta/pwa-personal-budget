@@ -12,11 +12,12 @@ export const get_DateMonthDayYear = date => {
 
 export const get_DateTimeFormatted = date => {
 
+    
     //-- converts incoming date to string
     let dateStr = date.toString();
   
     //-- convert to date value
-    return moment(dateStr).format('MM/DD/YYYY HH:MM:SS');
+    return moment(dateStr).format('MM/DD/YYYY - HH:MM:SS');
 
     // get the character before the last from date which will be day. U
     // const lastChar = dateStr.charAt(dateStr.length - 1);
@@ -33,16 +34,18 @@ export const get_TimePassed = ( date ) => {
   //-- Provide a date/time and get duration since that date-time as a result in formatted str.
 
   
+  
   //-- Get curent time
   var now = moment(new Date()); 
   //-- Get the diff between now and created date
   var duration = moment.duration(now.diff(date));
   //-- Return value in hours
   var results = duration.asHours();
-  
-  if(results < 1){ let minutes = (Math.trunc(results)) + " minutes ago"; return minutes; }
+
+  if(results < 0.01){ let seconds = ((duration._data.seconds)) + " seconds ago"; return seconds; }
+  if(results < 1){ let minutes = ((duration._data.minutes)) + " minutes ago"; return minutes; }
   if(results < 24){ let hours = (Math.trunc(results)) + " hours ago"; return hours; }
-  if(results > 24){ let days = Math.trunc(results / 24) + " d"; return days; }
+  if(results >= 24){ let days = Math.trunc(results / 24) + " d"; return days; }
   
   //-- If for some reason gets to this point, return nothing. ( shouldn't happen but being safe )
   return null;
