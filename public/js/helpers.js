@@ -42,9 +42,9 @@ export const get_TimePassed = ( date ) => {
   //-- Return value in hours
   var results = duration.asHours();
 
-  if(results < 0.01){ let seconds = ((duration._data.seconds)) + " seconds ago"; return seconds; }
-  if(results < 1){ let minutes = ((duration._data.minutes)) + " minutes ago"; return minutes; }
-  if(results < 24){ let hours = (Math.trunc(results)) + " hours ago"; return hours; }
+  if(results < 0.01){ let seconds = ((duration._data.seconds)) + " s"; return seconds; }
+  if(results < 1){ let minutes = ((duration._data.minutes)) + " m"; return minutes; }
+  if(results < 24){ let hours = (Math.trunc(results)) + " h"; return hours; }
   if(results >= 24){ let days = Math.trunc(results / 24) + " d"; return days; }
   
   //-- If for some reason gets to this point, return nothing. ( shouldn't happen but being safe )
