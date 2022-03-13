@@ -52,7 +52,11 @@ export function populateChart() {
                   },
                   ticks: {
                     suggestedMax: 1000,
-                    suggestedMin: -1000
+                    suggestedMin: -1000,
+                    callback: function(value, index, ticks) {
+                        return '$ ' + value;
+                    }
+
                   }
                 }
             ],
