@@ -9,7 +9,7 @@ const DATA_CACHE_NAME = DATA_CACHE_PREFACE + VERSION
 let db;
 
 // establish a connection to IndexedDB database called 'personal-budget-pwa' and set it to version 1
-const request = indexedDB.open(SITE_CACHE_NAME, 1);
+const request = indexedDB.open(DATA_CACHE_NAME, 1);
 
 // upon a successful 
 request.onsuccess = function(event) {
