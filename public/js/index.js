@@ -21,24 +21,25 @@ fetch("/api/transaction")
     transactions = data;
     //-- fill data in UI based on results
     updateUI();
-    // populateTotal();
-    // populateTable();
-    // populateChart();
 });
 
 function updateForm(results) {
   
-  if(results.value > 0){
-    console.log(results.value)
+  if(results.value > 0){ 
+    //-- update with msg saying deposit
   }
-  
-  // let nameEl = document.querySelector("#t-name");
-  // let amountEl = document.querySelector("#t-amount");
-  // let errorEl = document.querySelector(".form .error");
-  // clear form
+  if(results.value < 0){ 
+    //-- update with msg saying withdraw
+  }
+
+  if(!results.value){ 
+    //-- update message saying missing info
+  }
+
   document.querySelector("#t-name").value = "";
   document.querySelector("#t-amount").value = "";
-  document.querySelector(".form .error").value = "";
+  document.querySelector(".form .error").textContent = "";
+  document.querySelector(".form .success").textContent = "test";
   
 }
 
@@ -57,10 +58,16 @@ function populateTable() {
   tbody.innerHTML = "";
 
   transactions.forEach(transaction => {
+    let transactionType;
+    if(transaction.value > 0 ){ transactionType = 'Deposit' }
+    if(transaction.value < 0 ){ transactionType = 'Withdraw' }
+    if(transaction.value === 0 ){ transactionType = 'Note' }
+
     // create and populate a table row
     let tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${transaction.name}</td>
+      <td>${transactionType}</td>
       <td>${transaction.value}</td>
       <td>${get_DateTimeFormatted(transaction.date)}</td>
       <td>${get_TimePassed(transaction.date)}</td>
@@ -79,9 +86,6 @@ function sendTransaction(isAdding) {
   if (nameEl.value === "" || amountEl.value === "") {
     errorEl.textContent = "Missing Information";
     return;
-  }
-  else {
-    errorEl.textContent = "";
   }
 
   // create record
