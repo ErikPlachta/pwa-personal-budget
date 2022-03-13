@@ -49,14 +49,14 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="js/index.js"></script>
   <script>
-    (function() {
+    (async function() {
       if("serviceWorker" in navigator) { // see if serviceWorker exists on the global navigator object.
-        await navigator.serviceWorker.register("./sw.js")
+         await navigator.serviceWorker.register("./sw.js")
           //-- TODO:: 03/12/2022 #EP || Remove console.logs and make UI interace instead
           .then(() => console.log("//-- index.html - Service Worker registered successfully."))
           .catch(error => console.log("//-- index.html - Service Worker registration failed:", error));
       }
     })();
-</script>
+  </script>
 </body>
 </html>

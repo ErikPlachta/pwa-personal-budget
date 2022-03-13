@@ -1,12 +1,15 @@
-const APP_PREFIX = 'pwa-personal-budget-';     
-const VERSION = 'version_0.1.0';
-const INDEX_DB_CACHE = APP_PREFIX + VERSION;
+const SITE_CACHE_PREFACE = "pb-site-cache"
+const DATA_CACHE_PREFACE = "pb-data-cache"
+const VERSION = "-v_0.1.0"
+const SITE_CACHE_NAME = SITE_CACHE_PREFACE + VERSION
+const DATA_CACHE_NAME = DATA_CACHE_PREFACE + VERSION
+
 
 // create variable to hold db connection
 let db;
 
 // establish a connection to IndexedDB database called 'personal-budget-pwa' and set it to version 1
-const request = indexedDB.open(INDEX_DB_CACHE, 1);
+const request = indexedDB.open(DATA_CACHE_NAME, 1);
 
 // upon a successful 
 request.onsuccess = function(event) {
