@@ -1,8 +1,8 @@
-const SITE_CACHE_NAME = "pb-site-cache"
-const DATA_CACHE_NAME = "pb-data-cache"
+const SITE_CACHE_PREFACE = "pb-site-cache"
+const DATA_CACHE_PREFACE = "pb-data-cache"
 const VERSION = "-v_0.1.0"
-const SITE_CACHE = SITE_CACHE_NAME + VERSION
-const DATA_CACHE = DATA_CACHE_NAME + VERSION
+const SITE_CACHE_NAME = SITE_CACHE_PREFACE + VERSION
+const DATA_CACHE_NAME = DATA_CACHE_PREFACE + VERSION
 
 //-- Files used within website
 const FILES_TO_CACHE = [
@@ -27,7 +27,7 @@ const DATA_TO_CACHE = [];
 self.addEventListener('install', async function(e){
     //-- Cache Site Content
     await e.waitUntil(
-        caches.open(SITE_CACHE)
+        caches.open(SITE_CACHE_NAME)
             //-- Take anything that is meant to be cached and store it in Cache Storage
             .then( cache => {
                 console.log(`//-- sw.js.install: Site Cache installed for ${FILES_TO_CACHE.length} files.`)
@@ -36,9 +36,9 @@ self.addEventListener('install', async function(e){
     )
     //-- Cache site data - which is used for user input in offline events
     await e.waitUntil(
-        caches.open(DATA_CACHE)
+        caches.open(DATA_CACHE_NAME)
             .then( cache => {
-                console.log(`//-- sw.js.install: Data Cache installed for ${DATA_TO_CACHE.length} files.`)
+                console.log(`//-- sw.js.install: Data Cache installed for ${DATA_TO_CACHE.length} values.`)
                 return (cache.addAll(DATA_TO_CACHE))
             })
     )
@@ -49,10 +49,11 @@ self.addEventListener('activate', async function(e){
     //-- Activate the Sevice Worker
     await e.waitUntil(
         caches.keys().then(keyList => {
+
             return Promise.all(
                 keyList.map( key => {
-                    if (key !== SITE_CACHE && key !== DATA_CACHE) {
-                        console.log(`//-- sw.js.activate: - Removing old cache data ${key}`);
+                    if (key !== SITE_CACHE_NAME && key !== DATA_CACHE_NAME) {
+                        console.log(`//-- sw.js.activate: - Purging old cache data for ${key}`);
                         return caches.delete(key);
                     }
                 })
@@ -71,7 +72,7 @@ self.addEventListener('fetch', async function(evt) {
         await evt.respondWith(
           caches
             //-- open the data-cache
-            .open(DATA_CACHE)
+            .open(DATA_CACHE_NAME)
             .then(cache => { 
                 //-- return the request to fetch assuming it's a fetch-request
                 return fetch(evt.request)
