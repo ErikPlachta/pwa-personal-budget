@@ -1,8 +1,53 @@
 {
     "name" : "Personal Budget PWA",
-    "short_name" : "Personal-Budget",
-    "description": "demonstrate how using a PWA and Service Workers can be used in-hand with a Node/Express.js server to build a seamless user experience where performance is not affected by the users network connection.",
-    "start_url" : "./index.html",
+    "short_name" : "PB",
+    "description" : "A PWA Concept App by Erik Plachta",
+    "background_color" : "#E9E9EB",
     "theme_color" : "#222222",
-    "background_color" : "#E9E9EB"
+    "start_url" : "/index.html",
+    "display" : "standalone",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "/icons/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/icon-512x512.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/icon-512x512.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/icon-512x512.png",
+            "sizes": "152x152",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/icon-512x512.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/icon-512x512.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        }
+        ,  {
+            "src": "/icons/icon-512x512.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        }
+        ,  {
+            "src": "/icons/icon-512x512.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        }
+    ]
+    
 }
