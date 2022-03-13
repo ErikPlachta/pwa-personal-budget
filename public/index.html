@@ -27,7 +27,7 @@
 
     <div class="form">
       <input type="text" id="t-name" placeholder="Name of transaction" />
-      <input type="number" min="0" id="t-amount" placeholder="Transaction amount" />
+      <input type="number" min="0" id="t-amount" placeholder="Transaction amount" oninput="validity.valid||(value='');"/>
       <button id="add-btn"><i class="fa fa-plus buttons"></i>Deposit</button>
       <button id="sub-btn"><i class="fa fa-minus"></i>Withdraw</button>
       <p class="error"></p>
@@ -39,6 +39,7 @@
           <th>Transaction</th>
           <th>Amount</th>
           <th>Date-Time</th>
+          <th>Posted</th>
         </thead>
         <tbody id="tbody">
           
@@ -49,6 +50,7 @@
     <canvas id="myChart"></canvas>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script type="module" src="js/chart.js"></script>
   <script type="module" src="js/index.js"></script>

@@ -31,11 +31,33 @@ export function populateChart() {
       data: {
         labels,
         datasets: [{
-            label: "Balance over Time",
+            label: "Balance",
             fill: true,
-            backgroundColor: "#6666ff",
+            backgroundColor: "rgba(10,200,10,.5)",
             data
         }]
-    }
+    },
+    options: {
+        title: {
+          display: true,
+          text: 'Balance over Time'
+        },
+        scales: {
+            yAxes: [
+                {
+                  stacked: true,
+                  gridLines: {
+                    display: true,
+                    color: "rgba(0,0,0,1)"
+                  },
+                  ticks: {
+                    suggestedMax: 1000,
+                    suggestedMin: -1000
+                  }
+                }
+            ],
+        }
+      }
+    
   });
 }

@@ -1,22 +1,29 @@
 
+//-- Array used to hold transaction data
 export var transactions = [];
-// let myChart;
-
+//-- Managing chart from chart.js using module from CDN -> https://cdn.jsdelivr.net/npm/chart.js@2.8.0
 import {populateChart } from './chart.js';
+import { get_TimePassed, get_DateTimeFormatted } from './helpers.js';
 
+//-- manage updating UI
+function updateUI(){
+  // re-run logic to populate ui with new record
+  populateChart();
+  populateTable();
+  populateTotal();
+}
 
-
+//-- Getting transaction data to pupulate ui
 fetch("/api/transaction")
-  .then(response => {
-    return response.json();
-  })
+  .then(response => { return response.json(); })
   .then(data => {
     // save db data on global variable
     transactions = data;
-
-    populateTotal();
-    populateTable();
-    populateChart();
+    //-- fill data in UI based on results
+    updateUI();
+    // populateTotal();
+    // populateTable();
+    // populateChart();
   });
 
 function populateTotal() {
@@ -39,50 +46,13 @@ function populateTable() {
     tr.innerHTML = `
       <td>${transaction.name}</td>
       <td>${transaction.value}</td>
-      <td>${transaction.date}</td>
+      <td>${get_DateTimeFormatted(transaction.date)}</td>
+      <td>${get_TimePassed(transaction.date)}</td>
     `;
 
     tbody.appendChild(tr);
   });
 }
-
-// function populateChart() {
-//   // copy array and reverse it
-//   let reversed = transactions.slice().reverse();
-//   let sum = 0;
-
-//   // create date labels for chart
-//   let labels = reversed.map(t => {
-//     let date = new Date(t.date);
-//     return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-//   });
-
-//   // create incremental values for chart
-//   let data = reversed.map(t => {
-//     sum += parseInt(t.value);
-//     return sum;
-//   });
-
-//   // remove old chart if it exists
-//   if (myChart) {
-//     myChart.destroy();
-//   }
-
-//   let ctx = document.getElementById("myChart").getContext("2d");
-
-//   myChart = new Chart(ctx, {
-//     type: 'line',
-//       data: {
-//         labels,
-//         datasets: [{
-//             label: "Balance over Time",
-//             fill: true,
-//             backgroundColor: "#6666ff",
-//             data
-//         }]
-//     }
-//   });
-// }
 
 function sendTransaction(isAdding) {
   let nameEl = document.querySelector("#t-name");
@@ -114,9 +84,7 @@ function sendTransaction(isAdding) {
   transactions.unshift(transaction);
 
   // re-run logic to populate ui with new record
-  populateChart();
-  populateTable();
-  populateTotal();
+  updateUI();
   
   // also send to server
   fetch("/api/transaction", {
