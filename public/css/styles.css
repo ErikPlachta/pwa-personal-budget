@@ -157,6 +157,8 @@ tr:nth-child(odd) {
   
   width: 90%;
   margin: 0 auto;
+  
+  transition: ease-in-out 200ms;
 }
 
 
@@ -192,15 +194,28 @@ tr:nth-child(odd) {
   }
 } */
 
+@media (max-width: 1100px){
+  .transactions {
+    width: 95%;
+  }
+
+  td:last-child,
+  th:last-child {
+    display: none
+  }
+}
+
+
 @media (max-width: 700px){
   :root {
       
   
   }
 
-  td:last-child,
-  th:last-child {
-    display: none
+
+
+  .transactions {
+    width: 100%;
   }
 }
 
@@ -214,7 +229,5 @@ tr:nth-child(odd) {
     max-width: clamp(3rem, 7vw + 1rem, 12rem)
   }
 
-  .transactions {
-    width: 100%;
-  }
+ 
 }

@@ -11,22 +11,24 @@ export const get_DateMonthDayYear = date => {
   };
 
 export const get_DateTimeFormatted = date => {
-
-    
     //-- converts incoming date to string
     let dateStr = date.toString();
-  
     //-- convert to date value
-    return moment(dateStr).format('MM/DD/YYYY - HH:MM:SS');
+    return moment(dateStr).format('MM/DD/YYYY - LT');
+};
 
-    // get the character before the last from date which will be day. U
-    // const lastChar = dateStr.charAt(dateStr.length - 1);
-  
-    // //-- If-> return statements to determine how to format date suffix based on values
-    // if (lastChar === '1' && dateStr !== '11') { return `${dateStr}st`;} 
-    // if (lastChar === '2' && dateStr !== '12') { return `${dateStr}nd`;}  
-    // if (lastChar === '3' && dateStr !== '13') { return `${dateStr}rd`;}
-    // return `${dateStr}th`;
+export const get_DateFormatted = date => {
+  //-- converts incoming date to string
+  let dateStr = date.toString();
+  //-- convert to date value
+  return moment(dateStr).format('MM/DD/YYYY');
+};
+
+export const get_TimeFormatted = date => {
+  //-- converts incoming date to string
+  let dateStr = date.toString();
+  //-- convert to date value
+  return moment(dateStr).format('LT');
 };
 
 
