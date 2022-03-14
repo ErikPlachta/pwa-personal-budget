@@ -65,29 +65,12 @@ a {
   color: inherit;
 }
 
-/* header{
-  z-index: 1;
-  position: sticky;
-  top: 0;
-  width: 100%;
-  padding: 2rem 0;
-  border-bottom: 1px solid #ddd;
-  overflow: hidden;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-
-  flex-direction: column;
-  text-align: center;
-  background-color: var(--header_background);
-  color: var(--header_font)
-} */
-
 /* Create a sticky/fixed navbar */
 #navbar {
+  display: -webkit-flex;
   display: flex;
   flex-direction: row;
+
   overflow: hidden;
   background-color: #f1f1f1;
   padding: 2rem 0;
@@ -96,6 +79,15 @@ a {
   width: 100%;
   top: 0; /* At the top */
   z-index: 99;
+  
+   
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+
+  /*flex-direction: column; */
+  
+  background-color: var(--header_background);
+  color: var(--header_font);
 }
 
 /* Style the navbar links */
