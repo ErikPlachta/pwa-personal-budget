@@ -3,7 +3,7 @@ window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    document.getElementById("navbar").style.padding = "0px 10px";
+    document.getElementById("navbar").style.padding = "0px";
     document.getElementById("logo").style.fontSize = "25px";
     document.getElementById("logo-img").style.height = "30px";
     

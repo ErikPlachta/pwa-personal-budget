@@ -71,6 +71,9 @@ a {
   display: flex;
   flex-direction: row;
   /* flex-direction: wrap; */
+  -webkit-justify-content: space-evenly;
+  justify-content: space-evenly;
+
   overflow: hidden;
   background-color: #f1f1f1;
   padding: 2rem 0;
@@ -79,12 +82,6 @@ a {
   width: 100%;
   top: 0; /* At the top */
   z-index: 99;
-  
-   
-  -webkit-justify-content: space-evenly;
-  justify-content: space-evenly;
-
-  flex-direction: row;
   
   background-color: var(--header_background);
   color: var(--header_font);
@@ -99,19 +96,28 @@ a {
   font-size: 35px;
   font-weight: bold;
   transition: 0.4s;
+  text-shadow: 0 0 1rem rgba(0,0,0,.25);
 }
 
 /* Display some links to the right */
 #navbar-right {
   flex: 1 1 20%;
-  float: right;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  /* flex-direction: wrap; */
+  -webkit-justify-content: space-evenly;
+  justify-content: space-evenly;
+  
   align-items: center;
   text-align: center;
+  height: 100%;
 }
 
 /* Style the navbar links */
 #navbar-right a {
-  
+  text-shadow: 0 0 .1rem rgba(0,0,0,.9);
+  height: 100%;  
   float: left;
   color: var(--c9);
   text-align: center;
@@ -125,8 +131,9 @@ a {
 }
 
 
-#navbar #logo a:hover {
-  border-bottom: 3px solid red;
+#navbar #logo:hover {
+  /* border-bottom: 3px solid red; */
+  text-shadow: 0 0 .1rem rgba(0,0,0,.9);
 
 }
 
@@ -180,10 +187,7 @@ main {
 }
 
 section.anchor{
-  
   scroll-margin-top: 90px;
-  /* padding-top: 50px;
-  margin-top: -50px; */
 }
 
 .about,
@@ -258,35 +262,7 @@ tr:nth-child(odd) {
 
 /*                     MEDIA QUERIES                     */
 
-/* @media screen and (min-width: 1920x){
-  
-}
 
-
-@media screen and (min-width: 1024px){
-  
-}
-
-@media screen and (min-width: 800px){
-  h1{
-    font-size: 5rem;
-  }
-}
-
-@media screen and (min-width: 500px){
-  h1{
-    font-size: 4rem;
-  } 
-} */
-
-/* @media (min-width: 40em){
-  :root {
-    --fs-xl: 7rem;
-    --fs-600: 2rem;
-    --fs-400: 1.25rem;
-  
-  }
-} */
 
 @media (max-width: 1100px){
   .balance-timeline,
@@ -300,6 +276,26 @@ tr:nth-child(odd) {
   }
 }
 
+@media (max-width: 900px){
+  main {
+    padding-top: 400px;
+  }
+
+  section.anchor{
+    scroll-margin-top: 200px;
+  }
+  
+  #navbar-right,
+  #navbar{
+    flex-direction: column;
+    padding: 0 ;
+  }
+
+  #navbar-right a{
+    width: 100%;
+  }
+
+}
 
 @media (max-width: 750px){
 
@@ -323,16 +319,3 @@ tr:nth-child(odd) {
 }
 
 /* Add responsiveness - on screens less than 580px wide, display the navbar vertically instead of horizontally */
-@media screen and (max-width: 580px) {
-  #navbar {
-    padding: 20px 10px !important; /* Use !important to make sure that JavaScript doesn't override the padding on small screens */
-  }
-  #navbar a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-  #navbar-right {
-    float: none;
-  }
-}
