@@ -203,6 +203,18 @@ section.anchor{
 }
 
 
+.total {
+  position: fixed; 
+  left: 10px;
+  top: 7rem;
+  z-index: 100;
+  background-color: var(--c10);
+  font-size: 2rem;
+  padding: 2rem 1rem;
+  border-radius: 1rem;
+
+}
+
 .form {
   margin-top: 25px;
   width: 100%;
