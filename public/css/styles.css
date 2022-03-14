@@ -70,6 +70,9 @@ a {
   display: -webkit-flex;
   display: flex;
   flex-direction: row;
+  /* flex-direction: wrap; */
+  -webkit-justify-content: space-evenly;
+  justify-content: space-evenly;
 
   overflow: hidden;
   background-color: #f1f1f1;
@@ -80,39 +83,65 @@ a {
   top: 0; /* At the top */
   z-index: 99;
   
-   
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-
-  /*flex-direction: column; */
-  
   background-color: var(--header_background);
   color: var(--header_font);
 }
 
+/* Style the logo */
+#navbar #logo {
+  align-items: center;
+  text-align: center;
+  flex: 1 2 20%;
+  margin: 0 auto;
+  font-size: 35px;
+  font-weight: bold;
+  transition: 0.4s;
+  text-shadow: 0 0 .3rem rgba(0,0,0,.25);
+}
+
+/* Display some links to the right */
+#navbar-right {
+  flex: 1 1 20%;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  /* flex-direction: wrap; */
+  -webkit-justify-content: space-evenly;
+  justify-content: space-evenly;
+  
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
 /* Style the navbar links */
-#navbar a {
+#navbar-right a {
+  text-shadow: 0 0 .1rem rgba(0,0,0,.9);
+  height: 100%;  
   float: left;
-  color: black;
+  color: var(--c9);
   text-align: center;
   padding: 12px;
   text-decoration: none;
   font-size: 18px;
   line-height: 25px;
   border-radius: 4px;
+  transition: ease-in-out 100ms;
+  /* border: 1px solid transparent; */
 }
 
-/* Style the logo */
-#navbar #logo {
-  font-size: 35px;
-  font-weight: bold;
-  transition: 0.4s;
+
+#navbar #logo:hover {
+  /* border-bottom: 3px solid red; */
+  text-shadow: 0 0 .3rem rgba(0,0,0,.9);
+
 }
 
 /* Links on mouse-over */
-#navbar a:hover {
-  background-color: #ddd;
-  color: black;
+#navbar-right a:hover {
+  color: var(--c12);
+  /* border: 1px solid var(--c6); */
+  background-color: rgba(229, 56, 59,.4);
 }
 
 /* Style the active/current link */
@@ -121,31 +150,20 @@ a {
   color: white;
 }
 
-/* Display some links to the right */
-#navbar-right {
-  float: right;
-}
-
-h1{
-  font-size: var(--fs-xl);
-  font-weight: var(--fw-400);
-  padding: 0;
-  margin: 0 auto;
-}
-
 img.logo {
   -webkit-filter: invert(1); /* Safari/Chrome */
   filter: invert(1);
   max-width: var(--img-xl);
-  max-height: 70px;
+  max-height: 50px;
   vertical-align: center;
+  padding-top: .5rem;
 }
 
 
 main {
   margin: 0 auto;
   /* max-width: 90%; */
-  padding-top: 200px;
+  padding-top: 150px;
   /* scroll-padding: 50px 0 0 50px; */
   text-align: center;
   
@@ -169,10 +187,7 @@ main {
 }
 
 section.anchor{
-  
   scroll-margin-top: 90px;
-  /* padding-top: 50px;
-  margin-top: -50px; */
 }
 
 .about,
@@ -247,35 +262,7 @@ tr:nth-child(odd) {
 
 /*                     MEDIA QUERIES                     */
 
-/* @media screen and (min-width: 1920x){
-  
-}
 
-
-@media screen and (min-width: 1024px){
-  
-}
-
-@media screen and (min-width: 800px){
-  h1{
-    font-size: 5rem;
-  }
-}
-
-@media screen and (min-width: 500px){
-  h1{
-    font-size: 4rem;
-  } 
-} */
-
-/* @media (min-width: 40em){
-  :root {
-    --fs-xl: 7rem;
-    --fs-600: 2rem;
-    --fs-400: 1.25rem;
-  
-  }
-} */
 
 @media (max-width: 1100px){
   .balance-timeline,
@@ -289,11 +276,49 @@ tr:nth-child(odd) {
   }
 }
 
+@media (max-width: 900px){
+  /* main {
+    padding-top: 400px;
+  }
+
+  section.anchor{
+    scroll-margin-top: 200px;
+  }
+  
+  #navbar-right,
+  #navbar{
+    flex-direction: column;
+    padding: 0 ;
+  }
+
+  #navbar-right a{
+    width: 100%;
+  } */
+
+}
 
 @media (max-width: 750px){
 
   .balance-timeline,
   .transactions {
+    width: 100%;
+  }
+
+  main {
+    padding-top: 400px;
+  }
+
+  section.anchor{
+    scroll-margin-top: 200px;
+  }
+  
+  #navbar-right,
+  #navbar{
+    flex-direction: column;
+    padding: 0 ;
+  }
+
+  #navbar-right a{
     width: 100%;
   }
 }
@@ -308,20 +333,8 @@ tr:nth-child(odd) {
     max-width: clamp(3rem, 7vw + 1rem, 12rem)
   }
 
+  
  
 }
 
 /* Add responsiveness - on screens less than 580px wide, display the navbar vertically instead of horizontally */
-@media screen and (max-width: 580px) {
-  #navbar {
-    padding: 20px 10px !important; /* Use !important to make sure that JavaScript doesn't override the padding on small screens */
-  }
-  #navbar a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-  #navbar-right {
-    float: none;
-  }
-}

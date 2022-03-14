@@ -22,28 +22,25 @@
 <body>
 
   <header id="navbar">
-    <!-- <a href="#navbar"> -->
-      <h1 id="logo">
-        <img class="logo" id="logo-img" src="icons/logo.png" />
-        Budget Tracker
-      </h1>
-    <!-- </a> -->
+    
+    
+
+    <a id="logo" href="#top">
+      <img alt="Budget Tracker App" class="logo" id="logo-img" src="icons/logo.png" />
+      Budget Tracker  
+    </a>
     
     <nav id="navbar-right">
-      <a href="#balance-timeline">Balance Timeline</a>
-      <a href="#record-transaction">Record Transaction</a>
+      <a href="#record-transaction">Record</a>
+      <a href="#balance-timeline">Timeline</a>
+      <a href="#transaction-details">Details</a>
       <a href="#about">About</a>
     </nav>
 
   </header>
 
-  <main>    
-    
-    <section class="anchor" id="balance-timeline">
-      <h2>Balance Timeline</h2>
-      <canvas id="myChart"></canvas>
-    </section>
-    
+  <main id="top">
+
     <section class="anchor" id="record-transaction">
       <h2>Record Transaction</h2>
       <div class="toolbar">
@@ -61,7 +58,17 @@
           <p class="success"></p>
         </div>
       </div>
-
+    </section>
+    
+    <section class="anchor" id="balance-timeline">
+      <h2>Balance Timeline</h2>
+      <canvas id="myChart"></canvas>
+    </section>
+    
+    
+    
+    <section class="anchor" id="transaction-details">
+      <h2>Transaction Details</h2>
       <div class="transactions">
         <table>
           <thead>
@@ -81,7 +88,7 @@
       <h2>About</h2>
       <div>This is a Concept App</div>
     </section>
-  </main>
+  </main#>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
