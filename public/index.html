@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
-  <title>Budget Tracker - PWA - Erik Plachta</title>
+  <title>My Budget - PWA - Erik Plachta</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="icon" type="image/png" href="icons/favicon-16x16.png">
   
@@ -25,11 +25,10 @@
 
     <a id="logo" href="#top">
       <img alt="Budget Tracker App" class="logo" id="logo-img" src="icons/logo.png" />
-      Budget Tracker  
+      My Budget
     </a>
     
     <nav id="navbar-right">
-      <a href="#record-transaction">Record</a>
       <a href="#balance-timeline">Timeline</a>
       <a href="#transaction-details">Details</a>
       <a href="#about">About</a>
@@ -38,21 +37,15 @@
   <section>
     
   </section>
-
-  <main id="top">
+  
+  <section class="toolbar" id="toolbar">
     
-    <section class="anchor record" id="record-transaction">
-      
-      <h2>Record Transaction</h2>
-      
-      <div class="toolbar">
-        <h2 class="total">Balance: $<span id="total">0</span></h2>
-        <!-- <button id="clear-btn"><i class="fa fa-trash buttons"></i>Clear Balance</button> -->
-      </div>
-
+      <h2 class="total" id='balance'>Account Balance: $<span id="total">0</span></h2>
+    
       <div class="form">
         <input type="text" id="t-name" placeholder="Enter a description" />
         <input type="number" min="1" id="t-amount" placeholder="Enter an amount" oninput="validity.valid||(value='');"/>
+        
         <button id="add-btn"><i class="fa fa-plus buttons"></i>Deposit</button>
         <button id="sub-btn"><i class="fa fa-minus"></i>Withdraw</button>
         <div class="message">
@@ -60,7 +53,11 @@
           <p class="success"></p>
         </div>
       </div>
-    </section>
+    
+    <!-- <button id="clear-btn"><i class="fa fa-trash buttons"></i>Clear Balance</button> -->
+  </section>
+
+  <main id="top">
     
     <section class="anchor" id="balance-timeline">
       <h2>Balance Timeline</h2>
