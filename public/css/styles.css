@@ -20,15 +20,23 @@
   --c16: #494B50;
   --c17: #00698C; /* link hovered */
   --c18: #44464A; /* text */
+  --c19: rgb(6, 41, 66);
+  --c20: rgba(229, 56, 59,.4);
+  --c21: rgba(245, 243, 244,.2);
+  --c22: rgba(255, 205, 65,.4);
+  --c23: rgba(186, 24, 27,.9);
 
+  --bg-hover:  var(--c22);
   
-  --header_background: var(--c4);
+  --header_background: var(--c19);
   --header_font: var(--c10);
   /* Backgrounds */
   --bg_Body: var(--c11); /* A very light shade of white gray */    
   --bg_Section: var(--c12); /* A variation of white gray  */
   /* Buttons */
   
+  
+
   --ff-body: 'Roboto', sans-serif;
   --ff-heading: "Oswald", sans-serif;
 
@@ -41,6 +49,9 @@
   --fw-300: 300;
 
   --img-xl: max-width: clamp(1rem, 1vw + 1rem, 3rem);
+
+  --bs-01: 0 0 .125rem rgba(0,0,0,.5), 0 0 1rem rgba(0,0,0,.25);
+  --bsi-01: inset .2rem 0 0 var(--c23);
 
 }
 
@@ -149,19 +160,18 @@ a {
 /* Links on mouse-over */
 #navbar-right a:hover {
   color: var(--c12);
-  /* border: 1px solid var(--c6); */
-  background-color: rgba(229, 56, 59,.4);
+  background-color: var(--bg-hover);
 }
 
-/* Style the active/current link */
-#navbar a.active {
-  background-color: dodgerblue;
-  color: white;
+/* Style the active/current link - when scroll to this section effect */
+#navbar-right a.active {
+  background-color: rgba(229, 56, 59,.4);
+  color: var(--c12);
 }
 
 img.logo {
-  -webkit-filter: invert(1); /* Safari/Chrome */
-  filter: invert(1);
+  /* -webkit-filter: invert(1); /* Safari/Chrome */
+  /* filter: invert(1); */
   max-width: var(--img-xl);
   max-height: 50px;
   vertical-align: center;
@@ -237,7 +247,8 @@ button, input {
 #balance-timeline{
   width: 90%;
   margin: 0 auto;
-  box-shadow: 0 0 .125rem rgba(0,0,0,.5), 0 0 1rem rgba(0,0,0,.25);
+  
+  box-shadow: var(--bs-01)
 }
 
 table {
@@ -248,8 +259,7 @@ table {
   overflow: hidden;
   border-radius: .25rem;
   white-space: normal;
-  box-shadow: 0 0 .125rem rgba(0,0,0,.5), 0 0 1rem rgba(0,0,0,.25);
-  /* box-shadow: 0 0 .25rem rgba(0,0,0,.5); */
+  box-shadow: var(--bs-01)
 }
 
 td, th {
@@ -261,7 +271,7 @@ td, th {
 }
 
 th {
-  background-color: var(--c5);
+  background-color: var(--c19);
   color: var(--c9);
   font-weight: var(--fw-500);
   font-size: 1.25rem;
@@ -272,9 +282,7 @@ tr{
 }
 
 tr:hover {
-  box-shadow: inset .2rem 0 0 rgba(186, 24, 27,.9);
-
-  /* box-shadow: 0 0 .1rem rgba(0,0,0,1); */
+  box-shadow: var(--bsi-01);
   filter: brightness(102.5%);
   /* zoom: 1.01; */
   overflow: hidden;
