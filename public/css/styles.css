@@ -1,4 +1,6 @@
 :root {
+
+  /*                 TESTING              */
   --c-f: #ae1e23;
   --c0: #D71E28;
   --c0-h: #B01C24;
@@ -20,26 +22,37 @@
   --c16: #494B50;
   --c17: #00698C; /* link hovered */
   --c18: #44464A; /* text */
-  --c19: rgb(6, 41, 66);
   --c20: rgba(229, 56, 59,.4);
   --c21: rgba(245, 243, 244,.2);
   --c22: rgba(255, 205, 65,.4);
-  --c23: rgba(186, 24, 27,.9);
+  --c23: rgba(186, 24, 27,.9);  
+  
+  
+  /*                 BRANDING SCEHMA              */
 
-  --bg-hover:  var(--c22);
-  
-  --header_background: var(--c19);
-  --header_font: var(--c10);
-  /* Backgrounds */
-  --bg_Body: var(--c11); /* A very light shade of white gray */    
-  --bg_Section: var(--c12); /* A variation of white gray  */
-  /* Buttons */
-  
+  --c-b: rgb(21, 139, 220); /* brand color */
+  --c-p: rgb(6, 41, 66); /* base color */
+  --c-s: rgb(9, 64, 104);
+  --c-t: rgb(0, 105, 140); /* link hovered */
+
+  --c-accent: rgb(255, 205, 65);
+  --c-accent-faded: rgba(255, 205, 65,.5);
   
 
+  --c-body: rgb(249, 249, 249);
+  --c-section: rgb(254, 253, 255);
+
+
+  /*                 FONTS              */
+
+  /* families */
   --ff-body: 'Roboto', sans-serif;
   --ff-heading: "Oswald", sans-serif;
 
+  /* font color */
+  --header_font: var(--c10);
+
+  /* widths and weights */
   /* --fs-xl: 5rem; */
   --fs-xl: clamp(5rem, 7vw + 1rem, 12rem);
   --fs-600: 1.5rem;
@@ -48,11 +61,37 @@
   --fw-400: 400;
   --fw-300: 300;
 
+
+  /*                 BACKGROUNDS              */
+  --bg_Body: var(--c-body); 
+  --bg_Section: var(--c-section); 
+  --bg-headers: var(--c-p); /* all headers */
+  
+  --btn-bg-hover:  var(--c-b); /* Elements that need hover effects */
+
+
+  
+  /*          IMAGES           */
+
   --img-xl: max-width: clamp(1rem, 1vw + 1rem, 3rem);
+  
+  
+  /*      SHADOWS AND GENERAL STYLING       */
 
+  
+  /* filters */
+  --f-b-1025: brightness(102.5%);
+  --f-b-105: brightness(105%);
+  --f-b-110: brightness(110%);
+
+  /* box shadows */
   --bs-01: 0 0 .125rem rgba(0,0,0,.5), 0 0 1rem rgba(0,0,0,.25);
-  --bsi-01: inset .2rem 0 0 var(--c23);
-
+  --bsi-01: inset .2rem 0 0 var(--c-accent);
+  
+  /* text shadows */
+  --ts-B-05: 0 0 .1rem rgba(0,0,0,.5);
+  --ts-B-09: 0 0 .1rem rgba(0,0,0,.9);
+  --ts-B-1: 0 0 .1rem rgba(0,0,0,1);
 }
 
 html {
@@ -103,8 +142,9 @@ a {
   top: 0; /* At the top */
   z-index: 99;
   
-  background-color: var(--header_background);
+  background-color: var(--bg-headers);
   color: var(--header_font);
+  border-bottom: 4px solid var(--c-accent);
 }
 
 /* Style the logo */
@@ -136,7 +176,7 @@ a {
 
 /* Style the navbar links */
 #navbar-right a {
-  text-shadow: 0 0 .1rem rgba(0,0,0,.9);
+  text-shadow: var(--ts-B-09);
   height: 100%;  
   float: left;
   color: var(--c9);
@@ -152,20 +192,21 @@ a {
 
 
 #navbar #logo:hover {
-  /* border-bottom: 3px solid red; */
-  text-shadow: 0 0 .3rem rgba(0,0,0,.9);
+  text-shadow: var(--ts-B-09);
 
 }
 
 /* Links on mouse-over */
 #navbar-right a:hover {
   color: var(--c12);
-  background-color: var(--bg-hover);
+  background-color: var(--btn-bg-hover);
+  /* filter: var(--f-b-110); */
+
 }
 
 /* Style the active/current link - when scroll to this section effect */
 #navbar-right a.active {
-  background-color: rgba(229, 56, 59,.4);
+  background-color: var(--);
   color: var(--c12);
 }
 
@@ -271,7 +312,7 @@ td, th {
 }
 
 th {
-  background-color: var(--c19);
+  background-color: var(--c-p);
   color: var(--c9);
   font-weight: var(--fw-500);
   font-size: 1.25rem;
@@ -283,9 +324,19 @@ tr{
 
 tr:hover {
   box-shadow: var(--bsi-01);
-  filter: brightness(102.5%);
+  filter: var(--f-b-1025);
   /* zoom: 1.01; */
   overflow: hidden;
+}
+
+/* hide details */
+
+th:nth-last-child(2),
+td:nth-last-child(2),
+th:nth-last-child(1),
+td:nth-last-child(1)
+{
+    display: none
 }
 
 tr:nth-child(even) {
@@ -306,11 +357,6 @@ tr:nth-child(odd) {
   .balance-timeline,
   .transactions {
     width: 95%;
-  }
-
-  td:last-child,
-  th:last-child {
-    display: none
   }
 }
 

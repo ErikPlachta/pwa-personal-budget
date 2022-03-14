@@ -72,10 +72,10 @@ function populateTable() {
     // create and populate a table row
     let tr = document.createElement("tr");
     tr.innerHTML = `
+    <td>${get_DateFormatted(transaction.date)}</td>
       <td>${transaction.name}</td>
       <td>${transactionType}</td>
       <td>$ ${transaction.value}</td>
-      <td>${get_DateFormatted(transaction.date)}</td>
       <td>${get_TimeFormatted(transaction.date)}</td>
       <td>${get_TimePassed(transaction.date)}</td>
     `;
