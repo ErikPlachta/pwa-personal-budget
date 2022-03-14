@@ -273,7 +273,7 @@ main {
 }
 
 section.anchor{
-  scroll-margin-top: 90px;
+  scroll-margin-top: 200px;
 }
 
 
@@ -308,29 +308,44 @@ section.anchor{
 
 .total {
   text-align: center;
-  flex: 50%;
+  flex: 20%;
   padding: 0 1rem;
   font-weight: var(--fw-500);
-  font-size: var(--fs-400);
+  font-size: var(--fs-500);
   text-shadow: var(--ts-B-05);
   margin: auto;
   
 }
 
 .form {
+  align-items: center;
   display: flex; 
   justify-content: space-between;
-  padding: .25rem;
-  margin: .25rem;
+  flex-direction: row;
+  /* padding: .25rem;
+  margin: .25rem; */
   width: 100%;
+  flex-wrap: wrap;
 }
 
 button, input {
   font-size: 100%;
-  margin: .25rem;
-  border-radius: .25rem;
+  margin: .1rem .5rem;
+  padding: 0; 
+  border-radius: .5rem;
   text-align: center;
-  
+  min-height: 3rem;
+  /* height: 100%;  */
+  width: 90%;
+}
+#t-name{
+  flex: 90%;
+  width: 50%;
+}
+
+#t-amount,
+button {
+  flex: 10%;
 }
 
 #balance-timeline{
@@ -419,22 +434,41 @@ tr:nth-child(odd) {
 }
 
 @media (max-width: 900px){
+  
+  .toolbar{
+    flex-direction: column;
+  }
 
+  .total {
+    font-size: var(--fs-600);
+    flex: 50%;
+  }
+  .form{
+    
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  form input#t-name {
+    flex: 100%;
+    width: 100%;
+  }
 }
 
 @media (max-width: 750px){
 
-  .balance-timeline,
+  #balance-timeline,
   .transactions {
     width: 100%;
   }
 
   main {
-    padding-top: 500px;
+    padding-top: 200px;
   }
 
   section.anchor{
-    scroll-margin-top: 300px;
+    scroll-margin-top: 375px;
   }
   
   

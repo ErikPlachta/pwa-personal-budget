@@ -31,7 +31,7 @@
     <nav id="navbar-right">
       <a href="#balance-timeline">Timeline</a>
       <a href="#transaction-details">Details</a>
-      <a href="#about">About</a>
+      <a href="https://github.com/ErikPlachta/pwa-personal-budget" target="_blank">About</a>
     </nav>
   </header>
   <section>
@@ -40,19 +40,22 @@
   
   <section class="toolbar" id="toolbar">
     
-      <h2 class="total" id='balance'>Account Balance: $<span id="total">0</span></h2>
+      <h2 class="total" id='balance'>Balance: $<span id="total">0</span></h2>
     
       <div class="form">
-        <input type="text" id="t-name" placeholder="Enter a description" />
-        <input type="number" min="1" id="t-amount" placeholder="Enter an amount" oninput="validity.valid||(value='');"/>
+        <input type="text" id="t-name" placeholder="Enter a description.." />
+        <input type="number" min="1" id="t-amount" placeholder="$" oninput="validity.valid||(value='');"/>
         
-        <button id="add-btn"><i class="fa fa-plus buttons"></i>Deposit</button>
-        <button id="sub-btn"><i class="fa fa-minus"></i>Withdraw</button>
-        <div class="message">
-          <p class="error"></p>
-          <p class="success"></p>
-        </div>
+        
+        <button id="add-btn"><i class="fa fa-plus buttons"></i> Deposit</button>
+        <button id="sub-btn"><i class="fa fa-minus"></i> Withdraw</button>
+        
       </div>
+
+      <!-- <div class="">
+        <p class="error">xx</p>
+        <p class="success"></p>
+      </div> -->
     
     <!-- <button id="clear-btn"><i class="fa fa-trash buttons"></i>Clear Balance</button> -->
   </section>
