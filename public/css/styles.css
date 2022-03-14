@@ -1,10 +1,18 @@
 :root {
-  --color_Primary: rgb(0, 123, 176);
-  --color_Secondary: #1AC0A5;
-  --color_Tertiary: #FFFFFF; 
   
-  --header_font: #fefdff;
-  --header_background: #0b132b;
+  --c1: #0B090A;
+  --c2: #161A1D;
+  --c3: #660708;
+  --c4: #A4161A;
+  --c5: #BA181B;
+  --c6: #E5383B;
+  --c7: #B1A7A6;
+  --c8: #D3D3D3;
+  --c9: #F5F3F4;
+  --c10: #FFFFFF;
+  
+  --header_background: var(--c4);
+  --header_font: var(--c10);
   /* Backgrounds */
   --bg_Body: #F9F9F9; /* A very light shade of white gray */    
   --bg_Section: #fefdff; /* A variation of white gray  */
@@ -14,7 +22,7 @@
   --ff-heading: "Oswald", sans-serif;
 
   /* --fs-xl: 5rem; */
-  --fs-xl: clamp(3.5rem, 7vw + 1rem, 7rem);
+  --fs-xl: clamp(2.5rem, 7vw + 1rem, 10rem);
   --fs-600: 1.5rem;
   --fw-600: 600;
   --fs-400: 1rem;
@@ -59,27 +67,6 @@ h1{
 
 nav{}
 
-/* @media (min-width: 20em){
-  :root {
-    --fs-xl: 4rem;
-    --fs-600: 2rem;
-    --fs-400: 1.25rem;
-  
-  }
-}
-
-@media (min-width: 40em){
-  :root {
-    --fs-xl: 5rem;
-    --fs-600: 2rem;
-    --fs-400: 1.25rem;
-  
-  }
-} */
-
-
-
-
 
 main {
   margin: auto;
@@ -109,10 +96,6 @@ main {
   color: red;
 }
 
-.total {
-  font-size: 150%;
-  text-decoration: underline;
-}
 
 .form {
   margin-top: 25px;
@@ -125,39 +108,39 @@ button, input {
 }
 
 table {
-  padding-top: 1rem;
+  margin-top: 1rem;
   width: 100%;
   table-layout: auto;
   border-collapse:collapse;
-
+  overflow: hidden;
 }
 
 td, th {
   border-bottom: 1px solid rgba(0,0,0,.25);
   border-collapse:collapse;
   text-align: left;
-  /* padding-bottom: .125rem; */
+  padding-bottom: .125rem;
   text-align: center;
 }
 
 th {
-  /* background-color: var(--color_Primary);
-  color: var(--color_Secondary); */
-  font-weight: 500;
+  background-color: var(--c5);
+  color: var(--c9);
+  font-weight: var(--fw-500);
   font-size: 1.25rem;
 }
 
 tr:nth-child(even) {
-  background-color: #fff;
+  background-color: var(--c9);
 }
 tr:nth-child(odd) {
-  background-color: #fefefe;
+  background-color: var(--c10);
 }
 
 .transactions {
   text-align: left;
   min-height: 300px;
-  overflow: auto;
+  
   width: 90%;
   margin: 0 auto;
 }
@@ -194,3 +177,22 @@ tr:nth-child(odd) {
   
   }
 } */
+
+@media (max-width: 700px){
+  :root {
+      
+  
+  }
+
+  td:last-child,
+  th:last-child {
+    display: none
+  }
+}
+
+@media (min-width: 40em){
+  :root {
+    
+  
+  }
+}
