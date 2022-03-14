@@ -3,7 +3,7 @@
 export var transactions = [];
 //-- Managing chart from chart.js using module from CDN -> https://cdn.jsdelivr.net/npm/chart.js@2.8.0
 import {populateChart } from './chart.js';
-import { get_TimePassed, get_DateTimeFormatted } from './helpers.js';
+import { get_TimePassed, get_DateFormatted, get_TimeFormatted } from './helpers.js';
 
 //-- manage updating UI
 function updateUI(){
@@ -75,7 +75,8 @@ function populateTable() {
       <td>${transaction.name}</td>
       <td>${transactionType}</td>
       <td>$ ${transaction.value}</td>
-      <td>${get_DateTimeFormatted(transaction.date)}</td>
+      <td>${get_DateFormatted(transaction.date)}</td>
+      <td>${get_TimeFormatted(transaction.date)}</td>
       <td>${get_TimePassed(transaction.date)}</td>
     `;
 
