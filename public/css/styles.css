@@ -473,16 +473,20 @@ tr:nth-child(odd) {
   
   
   #navbar{
-    /* padding: 0; */
+    padding: 0 0 2rem 0;
     font-size: var(--fs-xl);
+    flex-direction: column;
   }
 
   /* hide for un-click required */
   #navbar-right{
-    display: none;
+    justify-content: space-around;
+    
   }
   #navbar-right a{
     width: 100%;
+    font-size: var(--fs-600);
+    
   }
 }
 
