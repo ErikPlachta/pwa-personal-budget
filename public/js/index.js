@@ -38,8 +38,7 @@ function updateForm(results) {
 
   document.querySelector("#t-name").value = "";
   document.querySelector("#t-amount").value = "";
-  document.querySelector(".form .error").textContent = "";
-  document.querySelector(".form .success").textContent = "test";
+  document.querySelector(".form .results").textContent = "";
   
 }
 

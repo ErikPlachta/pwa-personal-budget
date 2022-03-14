@@ -37,14 +37,21 @@
   
   
   <section class="toolbar" id="toolbar">
-    
     <h2 class="total" id='balance'>Balance: $<span id="total">0</span></h2>
-    
     <!-- <button id="clear-btn"><i class="fa fa-trash buttons"></i>Clear Balance</button> -->
   </section>
-
+  
   <main id="top">
-
+    <section class="message">
+      
+        <div id="message">
+          <span class="title">Results: </span>
+          <span class="results">ERROR</span>
+        </div>
+        <span id="close-message">X</span>
+      
+    </section>
+    
     <section  class="anchor" id="about">
       <article>
         <h2>About</h2>
@@ -112,10 +119,6 @@
           .catch(error => console.log("//-- index.html - Service Worker registration failed:", error));
       }
     })();
-
-  //   window.addEventListener("hashchange", function () {
-  //     window.scrollTo(window.scrollX, window.scrollY - 100);
-  // });
   </script>
 </body>
 </html>
