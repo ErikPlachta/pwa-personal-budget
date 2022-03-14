@@ -1,5 +1,7 @@
 :root {
-  
+  --c-f: #ae1e23;
+  --c0: #D71E28;
+  --c0-h: #B01C24;
   --c1: #0B090A;
   --c2: #161A1D;
   --c3: #660708;
@@ -12,6 +14,13 @@
   --c10: #FFFFFF;
   --c11: #f9f9f9;
   --c12: #fefdff;
+  --c13: #F9F7F6;
+  --c14: #FFCD41;
+  --c15: #3C3D41;
+  --c16: #494B50;
+  --c17: #00698C; /* link hovered */
+  --c18: #44464A; /* text */
+
   
   --header_background: var(--c4);
   --header_font: var(--c10);
