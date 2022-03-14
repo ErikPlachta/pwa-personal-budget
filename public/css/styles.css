@@ -24,12 +24,14 @@
   --ff-heading: "Oswald", sans-serif;
 
   /* --fs-xl: 5rem; */
-  --fs-xl: clamp(2.5rem, 7vw + 1rem, 10rem);
+  --fs-xl: clamp(5rem, 7vw + 1rem, 12rem);
   --fs-600: 1.5rem;
   --fw-600: 600;
   --fs-400: 1rem;
   --fw-400: 400;
   --fw-300: 300;
+
+  --img-xl: max-width: clamp(1rem, 1vw + 1rem, 3rem);
 
 }
 
@@ -53,8 +55,9 @@ body {
 }
 
 header{
+  padding-top: 1rem;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   text-align: center;
   background-color: var(--header_background);
   color: var(--header_font)
@@ -67,8 +70,12 @@ h1{
   margin: 0 auto;
 }
 
-h1 img.logo {
-  
+img.logo {
+  -webkit-filter: invert(1); /* Safari/Chrome */
+  filter: invert(1);
+  max-width: var(--img-xl);
+  max-height: 100px;
+  vertical-align: center;
 }
 
 nav{}
@@ -197,9 +204,17 @@ tr:nth-child(odd) {
   }
 }
 
-@media (min-width: 40em){
+@media (max-width: 660px){
   :root {
-    
+  --fs-xl: clamp(3rem, 7vw + 1rem, 12rem);
   
+  }
+
+  img.logo{
+    max-width: clamp(3rem, 7vw + 1rem, 12rem)
+  }
+
+  .transactions {
+    width: 100%;
   }
 }
