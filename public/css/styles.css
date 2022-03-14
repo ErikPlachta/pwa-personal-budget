@@ -190,13 +190,16 @@ section.anchor{
   scroll-margin-top: 90px;
 }
 
-.about,
-.transactions, 
-.balance-timeline {
+
+/* #record-transaction, */
+/* #balance-timeline, */
+/* #about, */
+.transactions {
   transition: ease-in-out 400ms;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   /* min-height: 300px; */
+  
 }
 
 
@@ -210,6 +213,12 @@ button, input {
   
 }
 
+#balance-timeline{
+  width: 90%;
+  margin: 0 auto;
+  box-shadow: 0 0 .125rem rgba(0,0,0,.5), 0 0 1rem rgba(0,0,0,.25);
+}
+
 table {
   margin-top: 1rem;
   width: 100%;
@@ -218,7 +227,7 @@ table {
   overflow: hidden;
   border-radius: .25rem;
   white-space: normal;
-  box-shadow: 0 0 .125rem rgba(0,0,0,.5), 0 0 2rem rgba(0,0,0,.25);
+  box-shadow: 0 0 .125rem rgba(0,0,0,.5), 0 0 1rem rgba(0,0,0,.25);
   /* box-shadow: 0 0 .25rem rgba(0,0,0,.5); */
 }
 
@@ -277,23 +286,6 @@ tr:nth-child(odd) {
 }
 
 @media (max-width: 900px){
-  /* main {
-    padding-top: 400px;
-  }
-
-  section.anchor{
-    scroll-margin-top: 200px;
-  }
-  
-  #navbar-right,
-  #navbar{
-    flex-direction: column;
-    padding: 0 ;
-  }
-
-  #navbar-right a{
-    width: 100%;
-  } */
 
 }
 

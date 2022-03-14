@@ -36,17 +36,18 @@
       <a href="#transaction-details">Details</a>
       <a href="#about">About</a>
     </nav>
-
   </header>
-
+  
   <main id="top">
+    <div class="toolbar">
+      <h2 class="total">Balance: $<span id="total">0</span></h2>
+      <!-- <button id="clear-btn"><i class="fa fa-trash buttons"></i>Clear Balance</button> -->
+    </div>
 
-    <section class="anchor" id="record-transaction">
+    <section class="anchor record" id="record-transaction">
+
       <h2>Record Transaction</h2>
-      <div class="toolbar">
-        <div class="total">Balance: $<span id="total">0</span></div>
-        <button id="clear-btn"><i class="fa fa-trash buttons"></i>Clear Balance</button>
-      </div>
+      
 
       <div class="form">
         <input type="text" id="t-name" placeholder="Enter a description" />
@@ -67,9 +68,9 @@
     
     
     
-    <section class="anchor" id="transaction-details">
+    <section class="anchor transactions" id="transaction-details">
       <h2>Transaction Details</h2>
-      <div class="transactions">
+      <div>
         <table>
           <thead>
             <th>Description</th>
@@ -84,11 +85,11 @@
       </div>
     </section>
 
-    <section id="about">
+    <section class="anchor"  id="about">
       <h2>About</h2>
       <div>This is a Concept App</div>
     </section>
-  </main#>
+  </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
