@@ -127,6 +127,9 @@ table {
   border-collapse:collapse;
   overflow: hidden;
   border-radius: .25rem;
+  white-space: normal;
+  box-shadow: 0 0 .125rem rgba(0,0,0,.5), 0 0 2rem rgba(0,0,0,.25);
+  /* box-shadow: 0 0 .25rem rgba(0,0,0,.5); */
 }
 
 td, th {
@@ -144,6 +147,19 @@ th {
   font-size: 1.25rem;
 }
 
+tr{
+  transition: ease-in-out 200ms;
+}
+
+tr:hover {
+  box-shadow: inset .2rem 0 0 rgba(186, 24, 27,.9);
+
+  /* box-shadow: 0 0 .1rem rgba(0,0,0,1); */
+  filter: brightness(102.5%);
+  /* zoom: 1.01; */
+  overflow: hidden;
+}
+
 tr:nth-child(even) {
   background-color: var(--c9);
 }
@@ -155,10 +171,10 @@ tr:nth-child(odd) {
   text-align: left;
   min-height: 300px;
   
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
   
-  transition: ease-in-out 200ms;
+  transition: ease-in-out 400ms;
 }
 
 
