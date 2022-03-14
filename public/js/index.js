@@ -1,18 +1,47 @@
-let transactions = [];
-let myChart;
 
+//-- Array used to hold transaction data
+export var transactions = [];
+//-- Managing chart from chart.js using module from CDN -> https://cdn.jsdelivr.net/npm/chart.js@2.8.0
+import {populateChart } from './chart.js';
+import { get_TimePassed, get_DateFormatted, get_TimeFormatted } from './helpers.js';
+
+//-- manage updating UI
+function updateUI(){
+  // re-run logic to populate ui with new record
+  populateChart();
+  populateTable();
+  populateTotal();
+}
+
+//-- Getting transaction data to pupulate ui
 fetch("/api/transaction")
-  .then(response => {
-    return response.json();
-  })
+  .then(response => { return response.json(); })
   .then(data => {
     // save db data on global variable
     transactions = data;
+    //-- fill data in UI based on results
+    updateUI();
+});
 
-    populateTotal();
-    populateTable();
-    populateChart();
-  });
+function updateForm(results) {
+  
+  if(results.value > 0){ 
+    //-- update with msg saying deposit
+  }
+  if(results.value < 0){ 
+    //-- update with msg saying withdraw
+  }
+
+  if(!results.value){ 
+    //-- update message saying missing info
+  }
+
+  document.querySelector("#t-name").value = "";
+  document.querySelector("#t-amount").value = "";
+  document.querySelector(".form .error").textContent = "";
+  document.querySelector(".form .success").textContent = "test";
+  
+}
 
 function populateTotal() {
   // reduce transaction amounts to a single total value
@@ -29,52 +58,29 @@ function populateTable() {
   tbody.innerHTML = "";
 
   transactions.forEach(transaction => {
+    
+    let transactionType;
+    if(transaction.value > 0 ){ transactionType = 'Deposit' }
+    if(transaction.value < 0 ){ transactionType = 'Withdraw' }
+    if(transaction.value === 0 ){ transactionType = 'Note' }
+
+
+    if(transaction.value > 0 ){ transaction.value = transaction.value }
+    if(transaction.value < 0 ){ transactionType = 'Withdraw' }
+    if(transaction.value === 0 ){ transactionType = 'Note' }
+
     // create and populate a table row
     let tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${transaction.name}</td>
-      <td>${transaction.value}</td>
+      <td>${transactionType}</td>
+      <td>$ ${transaction.value}</td>
+      <td>${get_DateFormatted(transaction.date)}</td>
+      <td>${get_TimeFormatted(transaction.date)}</td>
+      <td>${get_TimePassed(transaction.date)}</td>
     `;
 
     tbody.appendChild(tr);
-  });
-}
-
-function populateChart() {
-  // copy array and reverse it
-  let reversed = transactions.slice().reverse();
-  let sum = 0;
-
-  // create date labels for chart
-  let labels = reversed.map(t => {
-    let date = new Date(t.date);
-    return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-  });
-
-  // create incremental values for chart
-  let data = reversed.map(t => {
-    sum += parseInt(t.value);
-    return sum;
-  });
-
-  // remove old chart if it exists
-  if (myChart) {
-    myChart.destroy();
-  }
-
-  let ctx = document.getElementById("myChart").getContext("2d");
-
-  myChart = new Chart(ctx, {
-    type: 'line',
-      data: {
-        labels,
-        datasets: [{
-            label: "Total Over Time",
-            fill: true,
-            backgroundColor: "#6666ff",
-            data
-        }]
-    }
   });
 }
 
@@ -88,9 +94,6 @@ function sendTransaction(isAdding) {
     errorEl.textContent = "Missing Information";
     return;
   }
-  else {
-    errorEl.textContent = "";
-  }
 
   // create record
   let transaction = {
@@ -101,18 +104,18 @@ function sendTransaction(isAdding) {
 
   // if subtracting funds, convert amount to negative number
   if (!isAdding) {
-    transaction.value *= -1;
+    //-- gaurntees it's negative number coming in no matter what's in UI
+    transaction.value = -Math.abs(transaction.value);
   }
 
   // add to beginning of current array of data
   transactions.unshift(transaction);
-
-  // re-run logic to populate ui with new record
-  populateChart();
-  populateTable();
-  populateTotal();
   
-  // also send to server
+  
+  //-- add update to UI
+  updateUI();
+
+  //-- Send to server
   fetch("/api/transaction", {
     method: "POST",
     body: JSON.stringify(transaction),
@@ -130,17 +133,14 @@ function sendTransaction(isAdding) {
     }
     else {
       // clear form
-      nameEl.value = "";
-      amountEl.value = "";
+      updateForm(data);
     }
   })
   .catch(err => {
     // fetch failed, so save in indexed db
     saveRecord(transaction);
-
     // clear form
-    nameEl.value = "";
-    amountEl.value = "";
+    updateForm(err);
   });
 }
 

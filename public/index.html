@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
-  <title>Personal Budget - PWA - Erik Placht</title>
+  <title>Budget Tracker - PWA - Erik Plachta</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="icon" type="image/png" href="icons/favicon-16x16.png">
   
@@ -20,36 +20,75 @@
   
 </head>
 <body>
-  <div class="wrapper">
-    <div class="total">
-      <div class="total">Your total is: $<span id="total">0</span></div>
-    </div>
 
-    <div class="form">
-      <input type="text" id="t-name" placeholder="Name of transaction" />
-      <input type="number" min="0" id="t-amount" placeholder="Transaction amount" />
-      <button id="add-btn"><i class="fa fa-plus buttons"></i> Add Funds</button>
-      <button id="sub-btn"><i class="fa fa-minus"></i> Subtract Funds</button>
-      <p class="error"></p>
-    </div>
-
-    <div class="transactions">
-      <table>
-        <thead>
-          <th>Transaction</th>
-          <th>Amount</th>
-        </thead>
-        <tbody id="tbody">
-          
-        </tbody>
-      </table>
-    </div>
+  <header id="navbar">
+    <!-- <a href="#navbar"> -->
+      <h1 id="logo">
+        <img class="logo" id="logo-img" src="icons/logo.png" />
+        Budget Tracker
+      </h1>
+    <!-- </a> -->
     
-    <canvas id="myChart"></canvas>
-  </div>
+    <nav id="navbar-right">
+      <a href="#balance-timeline">Balance Timeline</a>
+      <a href="#record-transaction">Record Transaction</a>
+      <a href="#about">About</a>
+    </nav>
 
+  </header>
+
+  <main>    
+    
+    <section class="anchor" id="balance-timeline">
+      <h2>Balance Timeline</h2>
+      <canvas id="myChart"></canvas>
+    </section>
+    
+    <section class="anchor" id="record-transaction">
+      <h2>Record Transaction</h2>
+      <div class="toolbar">
+        <div class="total">Balance: $<span id="total">0</span></div>
+        <button id="clear-btn"><i class="fa fa-trash buttons"></i>Clear Balance</button>
+      </div>
+
+      <div class="form">
+        <input type="text" id="t-name" placeholder="Enter a description" />
+        <input type="number" min="1" id="t-amount" placeholder="Enter an amount" oninput="validity.valid||(value='');"/>
+        <button id="add-btn"><i class="fa fa-plus buttons"></i>Deposit</button>
+        <button id="sub-btn"><i class="fa fa-minus"></i>Withdraw</button>
+        <div class="message">
+          <p class="error"></p>
+          <p class="success"></p>
+        </div>
+      </div>
+
+      <div class="transactions">
+        <table>
+          <thead>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Age</th>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <div>This is a Concept App</div>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-  <script src="js/index.js"></script>
+  <script type="module" src="js/chart.js"></script>
+  <script type="module" src="js/index.js"></script>
+  <script src="js/scroll.js"></script>
   <script>
     (async function() {
       if("serviceWorker" in navigator) { // see if serviceWorker exists on the global navigator object.
@@ -59,6 +98,10 @@
           .catch(error => console.log("//-- index.html - Service Worker registration failed:", error));
       }
     })();
+
+  //   window.addEventListener("hashchange", function () {
+  //     window.scrollTo(window.scrollX, window.scrollY - 100);
+  // });
   </script>
 </body>
 </html>
