@@ -25,6 +25,32 @@ fetch("/api/transaction")
 
 function updateForm(results) {
   
+  //-- update message saying missing info
+  if(results == null){ 
+
+    let messageBackground = 'var(--c-succ';
+    let messageTitle = '';
+    let message = '';
+
+    if(document.querySelector("#t-name").value == ""){
+      console.log("no description");
+      messageTitle = "Warning:";
+      messageBackground = "var(--c-warn)";
+      message = "Must include a transaction description!";
+    }
+    
+    if(document.querySelector("#t-amount").value == ""){
+      messageTitle = "Warning:";
+      messageBackground = "var(--c-warn)";
+      message = message + " Must include an amount!";
+    }
+
+    document.querySelector("#message-title").textContent = messageTitle;
+    document.querySelector("#message-results").textContent = message;
+    return;
+  }
+
+
   if(results.value > 0){ 
     //-- update with msg saying deposit
   }
@@ -32,13 +58,9 @@ function updateForm(results) {
     //-- update with msg saying withdraw
   }
 
-  if(!results.value){ 
-    //-- update message saying missing info
-  }
-
   document.querySelector("#t-name").value = "";
   document.querySelector("#t-amount").value = "";
-  document.querySelector(".form #message-results").textContent = "";
+  document.querySelector("#message-results").textContent = "";
   
 }
 
@@ -90,7 +112,7 @@ function sendTransaction(isAdding) {
 
   // validate form
   if (nameEl.value === "" || amountEl.value === "") {
-    errorEl.textContent = "Missing Information";
+    updateForm(null)
     return;
   }
 

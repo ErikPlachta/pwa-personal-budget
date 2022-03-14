@@ -25,7 +25,7 @@
   --c20: rgba(229, 56, 59,.4);
   --c21: rgba(245, 243, 244,.2);
   --c22: rgba(255, 205, 65,.4);
-  --c23: rgba(186, 24, 27,.9);  
+  
   
   
   /*                 BRANDING SCEHMA              */
@@ -37,7 +37,7 @@
   --c-t: rgb(0, 105, 140); /* link hovered */
   --c-accent: rgb(255, 205, 65);
   --c-accent-faded: rgba(255, 205, 65,.5);
-  
+  --c-warn: rgba(186, 24, 27,.9);
 
   --c-body: rgb(249, 249, 249);
   --c-section: rgb(254, 253, 255);
@@ -255,12 +255,17 @@ img.logo {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  background-color: var(--c-b);
+  background: var(--c-warn);
+  box-shadow: var(--ts-B-09);
+  
   width: 100%;
   margin: 0;
   padding: 0;
-  /* top: 0; */
-  top: 135px;
+  top: 0;
+  height: 3rem;
+  align-items: center;
+  font-size: var(--fs-400);
+  /* top: 130px; */
   z-index: 1000;
 
   transition: var(--t-nav);
@@ -270,15 +275,19 @@ img.logo {
   flex: 90%;
 }
 
-.message .title{
-  padding: 0;
+#message-title{
+  float: left;
+  padding: 0 2rem;
   margin: 0;
+  font-weight: var(--fw-500);
 }
 
 #close-message{
   float: right;
   margin: .125rem .5rem;
   cursor: pointer;
+  font-style: bold;
+  color: white;
 }
 
 #close-message:hover {
