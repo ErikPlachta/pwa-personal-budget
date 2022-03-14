@@ -38,27 +38,26 @@ export function populateChart() {
         }]
     },
     options: {
-        title: {
-          display: true,
-          text: 'Balance over Time'
-        },
-        scales: {
-            yAxes: [
-                {
-                  stacked: true,
-                  gridLines: {
-                    display: true,
-                    color: "rgba(0,0,0,1)"
-                  },
-                  ticks: {
-                    suggestedMax: 1000,
-                    suggestedMin: -1000,
-                    callback: function(value, index, ticks) {
-                        return '$ ' + value;
-                    }
-
-                  }
+      legend: {
+        display: false
+      },
+      scales: {
+          yAxes: [
+            {
+              stacked: true,
+              gridLines: {
+                display: true,
+                color: "rgba(0,0,0,1)"
+              },
+              ticks: {
+                suggestedMax: 1000,
+                suggestedMin: -1000,
+                callback: function(value, index, ticks) {
+                    return '$ ' + value;
                 }
+
+              }
+            }
             ],
         }
       }
