@@ -21,61 +21,74 @@
 </head>
 <body>
 
-  <header>
-    <h1>
-      <img class="logo" src="icons/logo.png" />
-      Budget Tracker
-    </h1>
-    <!-- <nav>
-      About
-    </nav> -->
+  <header id="navbar">
+    <!-- <a href="#navbar"> -->
+      <h1 id="logo">
+        <img class="logo" src="icons/logo.png" />
+        Budget Tracker
+      </h1>
+    <!-- </a> -->
+    
+    <nav id="navbar-right">
+      <a href="#balance-timeline">Balance Timeline</a>
+      <a href="#record-transaction">Record Transaction</a>
+      <a href="#about">About</a>
+    </nav>
 
   </header>
 
-  <main>
-
-    <section class="chart">
+  <main>    
+    
+    <section class="anchor" id="balance-timeline">
       <h2>Balance Timeline</h2>
       <canvas id="myChart"></canvas>
     </section>
     
-    <div class="total">
-      <div class="total">Balance: $<span id="total">0</span></div>
-      <button id="clear-btn"><i class="fa fa-trash buttons"></i>Clear Balance</button>
-    </div>
-
-    <div class="form">
-      <input type="text" id="t-name" placeholder="Enter a description" />
-      <input type="number" min="1" id="t-amount" placeholder="Enter an amount" oninput="validity.valid||(value='');"/>
-      <button id="add-btn"><i class="fa fa-plus buttons"></i>Deposit</button>
-      <button id="sub-btn"><i class="fa fa-minus"></i>Withdraw</button>
-      <div class="message">
-        <p class="error"></p>
-        <p class="success"></p>
+    <section class="anchor" id="record-transaction">
+      <h2>Record Transaction</h2>
+      <div class="toolbar">
+        <div class="total">Balance: $<span id="total">0</span></div>
+        <button id="clear-btn"><i class="fa fa-trash buttons"></i>Clear Balance</button>
       </div>
-    </div>
 
-    <div class="transactions">
-      <table>
-        <thead>
-          <th>Description</th>
-          <th>Type</th>
-          <th>Amount</th>
-          <th>Date</th>
-          <th>Time</th>
-          <th>Age</th>
-        </thead>
-        <tbody id="tbody"></tbody>
-      </table>
-    </div>
-    
-    <canvas id="myChart"></canvas>
+      <div class="form">
+        <input type="text" id="t-name" placeholder="Enter a description" />
+        <input type="number" min="1" id="t-amount" placeholder="Enter an amount" oninput="validity.valid||(value='');"/>
+        <button id="add-btn"><i class="fa fa-plus buttons"></i>Deposit</button>
+        <button id="sub-btn"><i class="fa fa-minus"></i>Withdraw</button>
+        <div class="message">
+          <p class="error"></p>
+          <p class="success"></p>
+        </div>
+      </div>
+
+      <div class="transactions">
+        <table>
+          <thead>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Age</th>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <div>This is a Concept App</div>
+    </section>
   </main>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script type="module" src="js/chart.js"></script>
   <script type="module" src="js/index.js"></script>
+  <script src="js/scroll.js"></script>
   <script>
     (async function() {
       if("serviceWorker" in navigator) { // see if serviceWorker exists on the global navigator object.
@@ -85,6 +98,10 @@
           .catch(error => console.log("//-- index.html - Service Worker registration failed:", error));
       }
     })();
+
+  //   window.addEventListener("hashchange", function () {
+  //     window.scrollTo(window.scrollX, window.scrollY - 100);
+  // });
   </script>
 </body>
 </html>
