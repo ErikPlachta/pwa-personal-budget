@@ -38,7 +38,7 @@ function updateForm(results) {
 
   document.querySelector("#t-name").value = "";
   document.querySelector("#t-amount").value = "";
-  document.querySelector(".form .results").textContent = "";
+  document.querySelector(".form #message-results").textContent = "";
   
 }
 
@@ -86,7 +86,7 @@ function populateTable() {
 function sendTransaction(isAdding) {
   let nameEl = document.querySelector("#t-name");
   let amountEl = document.querySelector("#t-amount");
-  let errorEl = document.querySelector(".form .error");
+  let errorEl = document.querySelector("#message-results");
 
   // validate form
   if (nameEl.value === "" || amountEl.value === "") {

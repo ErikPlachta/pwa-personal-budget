@@ -255,16 +255,18 @@ img.logo {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  /* border: 1px solid red; */
   background-color: var(--c-b);
   width: 100%;
   margin: 0;
   padding: 0;
-  top: 0;
+  /* top: 0; */
+  top: 135px;
   z-index: 1000;
+
+  transition: var(--t-nav);
 }
 
-#message{
+.message div{
   flex: 90%;
 }
 

@@ -6,6 +6,7 @@ function scrollFunction() {
   if( document.documentElement.clientWidth > 750) {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
       document.getElementById("toolbar").style.top = "50px";
+      document.getElementById("message").style.top = "50px";
       // document.getElementById("logo").style.fontSize = "25px";
       document.getElementById("logo").style.fontSize = "var(--fs-600";
       document.getElementById("logo-img").style.height = "30px";
@@ -14,6 +15,7 @@ function scrollFunction() {
       
     } else {
       document.getElementById("toolbar").style.top = "134px";
+      document.getElementById("message").style.top = "134px";
       document.getElementById("logo").style.fontSize = "35px";
       document.getElementById("logo-img").style.height = "50px";
       document.getElementById("navbar").style.padding = "2rem 0";
@@ -25,13 +27,16 @@ function scrollFunction() {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
       document.getElementById("navbar-right").style.display = "none";
       document.getElementById("toolbar").style.top = "50px";
+      document.getElementById("message").style.top = "50px";
       document.getElementById("logo").style.fontSize = "30px";
       document.getElementById("logo-img").style.height = "30px";
       document.getElementById("navbar").style.padding = "0px";
       
+      
     } else {
       document.getElementById("navbar-right").style.display = "flex";
       document.getElementById("toolbar").style.top = "134px";
+      document.getElementById("message").style.top = "134px";
       document.getElementById("logo").style.fontSize = "35px";
       document.getElementById("logo-img").style.height = "50px";
       document.getElementById("navbar").style.padding = "0 0 2rem 0";
