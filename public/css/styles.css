@@ -131,43 +131,6 @@ a {
   color: inherit;
 }
 
-
-/* Create a sticky/fixed navbar */
-footer {
-  
-  display: -webkit-flex;
-  display: flex;
-  flex-direction: row;
-  flex-direction: wrap;
-  -webkit-justify-content: space-evenly;
-  justify-content: space-evenly;
-
-  /* overflow: hidden; */
-  background-color: #f1f1f1;
-  /* padding: .5rem;
-  margin: 0 auto; */
-  
-  transition: var(--t-header); /* Adds a transition effect when the padding is decreased */
-  position: fixed; /* Sticky/fixed navbar */
-  
-  width: 100%;
-  
-  bottom: 0; /* At the top */
-  z-index: 99;
-  
-  background-color: var(--bg-headers);
-  color: var(--c-header-font);
-  border-bottom: 4px solid var(--c-accent);
-}
-
-footer h2{
-  font-size: var(--fs-600);
-  font-weight: var(--fw-400);
-  text-shadow: var(--ts-B-09);
-  margin: auto 1rem;
-  padding: 0;
-}
-
 /* Create a sticky/fixed navbar */
 #navbar {
   display: -webkit-flex;
@@ -368,40 +331,7 @@ section.anchor{
   padding: 0 1rem;
   font-weight: var(--fw-500);
   font-size: var(--fs-400);
-  
-  margin: auto;
-  
-}
-
-.form {
-  align-items: center;
-  display: flex; 
-  justify-content: space-between;
-  flex-direction: row;
-  /* padding: .25rem;
-  margin: .25rem; */
-  width: 100%;
-  flex-wrap: wrap;
-}
-
-button, input {
-  font-size: 100%;
-  margin: .1rem .5rem;
-  padding: .25rem; 
-  border-radius: .5rem;
-  text-align: center;
-  min-height: 2rem;
-  /* height: 100%;  */
-  width: 90%;
-}
-#t-name{
-  flex: 90%;
-  width: 50%;
-}
-
-#t-amount,
-button {
-  flex: 10%;
+  margin: auto; 
 }
 
 #balance-timeline{
@@ -471,6 +401,76 @@ tr:nth-child(odd) {
 }
 
 
+/* Create a sticky/fixed navbar */
+footer {
+  
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  flex-direction: wrap;
+  -webkit-justify-content: space-evenly;
+  justify-content: space-evenly;
+
+  /* overflow: hidden; */
+  background-color: #f1f1f1;
+  position: fixed; /* Sticky/fixed navbar */
+  width: 100%;
+  bottom: 0; /* At the top */
+  z-index: 99;
+  
+  background-color: var(--bg-headers);
+  color: var(--c-header-font);
+  border-bottom: 4px solid var(--c-accent);
+
+  transition: var(--t-header); /* Adds a transition effect when the padding is decreased */
+}
+
+footer h2{
+  font-size: var(--fs-600);
+  font-weight: var(--fw-400);
+  text-shadow: var(--ts-B-09);
+  margin: auto 1rem;
+  padding: 0;
+}
+
+.form {
+  padding: 1rem;
+  align-items: center;
+  display: flex; 
+  justify-content: space-between;
+  flex-direction: row;
+  /* padding: .25rem;
+  margin: .25rem; */
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+button, input {
+  font-size: 100%;
+  margin: .1rem .5rem;
+  padding: .25rem; 
+  border-radius: .5rem;
+  text-align: center;
+  min-height: 2rem;
+  width: 90%;
+}
+#t-name{
+  flex: 90%;
+  width: 50%;
+}
+
+#t-amount,
+button {
+  flex: 10%;
+}
+
+button {
+  border-width:0;
+  cursor: pointer;
+  
+}
+
+
 /*                     MEDIA QUERIES                     */
 
 @media (max-width: 1100px){
@@ -504,11 +504,6 @@ tr:nth-child(odd) {
 }
 
 @media (max-width: 750px){
-
-  #balance-timeline,
-  .transactions {
-    width: 100%;
-  }  
   
   #navbar{
     padding: 0 0 2rem 0;
