@@ -10,12 +10,14 @@
   --c8: #D3D3D3;
   --c9: #F5F3F4;
   --c10: #FFFFFF;
+  --c11: #f9f9f9;
+  --c12: #fefdff;
   
   --header_background: var(--c4);
   --header_font: var(--c10);
   /* Backgrounds */
-  --bg_Body: #F9F9F9; /* A very light shade of white gray */    
-  --bg_Section: #fefdff; /* A variation of white gray  */
+  --bg_Body: var(--c11); /* A very light shade of white gray */    
+  --bg_Section: var(--c12); /* A variation of white gray  */
   /* Buttons */
   
   --ff-body: 'Roboto', sans-serif;
@@ -63,6 +65,10 @@ h1{
   font-weight: var(--fw-400);
   padding: 0;
   margin: 0 auto;
+}
+
+h1 img.logo {
+  
 }
 
 nav{}
@@ -113,6 +119,7 @@ table {
   table-layout: auto;
   border-collapse:collapse;
   overflow: hidden;
+  border-radius: .25rem;
 }
 
 td, th {
@@ -134,7 +141,7 @@ tr:nth-child(even) {
   background-color: var(--c9);
 }
 tr:nth-child(odd) {
-  background-color: var(--c10);
+  background-color: var(--c12);
 }
 
 .transactions {
