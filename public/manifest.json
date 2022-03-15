@@ -5,7 +5,7 @@
     "scope" : "/index.html",
     "id" : "My-Budget-PWA",
     "background_color" : "rgb(249,249,249)",
-    "theme_color" : "rgb(21,139,220)",
+    "theme_color" : "#062942",
     "start_url" : "/index.html",
     "display" : "standalone",
     "orientation": "portrait",
