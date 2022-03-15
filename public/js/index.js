@@ -25,21 +25,105 @@ fetch("/api/transaction")
 
 function updateForm(results) {
   
-  if(results.value > 0){ 
-    //-- update with msg saying deposit
+  //-- allow to close 
+  document.querySelector("#close-message").style.cursor = "pointer";
+
+  // if(document.querySelector(".message").classList.contains("fade-out")) {
+  //   console.log("//-- contains it remove it")
+  //   document.querySelector(".message").classList.add("remove-animation");
+  //   document.querySelector(".message").classList.remove("remove-animation");
+  // }
+
+  //-- Define defaults
+  let messageBackground = '';
+  let messageTitle = '';
+  let message = '';
+  
+  //-- update message saying missing info
+  if(results == null){ 
+    
+
+    //-- verify is missing description
+    if(document.querySelector("#t-name").value == ""){
+      messageTitle = "Warning:";
+      messageBackground = "var(--c-warn)";
+      message = "Must include a transaction description!";
+    }
+    
+    //-- verify is missing amount
+    if(document.querySelector("#t-amount").value == ""){
+      messageTitle = "Warning:";
+      messageBackground = "var(--c-warn)";
+      message = message + " Must include an amount!";
+    }
+
+    
+
+    //-- update status accordingly
+    document.querySelector("#message-title").textContent = messageTitle;
+    document.querySelector("#message-results").textContent = message;
+    document.querySelector(".message").style.opacity = '1';
+    document.querySelector(".message").style.backgroundColor = messageBackground;
+
+    setTimeout(() => { 
+      document.querySelector(".message").classList.add("fade-out");
+    }, 3000);
+    // document.querySelector(".message").style.animation="fade-out";
+    // document.querySelector(".message").style.animation="slidefadeinout";
+    // document.querySelector(".message").style.opacity="1";
+  
+    //-- fade out
+    setTimeout(() => { 
+      document.querySelector(".message").style.opacity = '0';
+      document.querySelector(".message").classList.remove("fade-out");
+      document.querySelector(".message").style.backgroundColor = "white";
+      document.querySelector("#close-message").style.cursor = "default";
+    }, 3000);
   }
-  if(results.value < 0){ 
-    //-- update with msg saying withdraw
+  
+  //-- otherwise success
+  else {
+    
+    let transactionType = '';
+
+    if(results.value > 0 ){
+      transactionType = "deposit"
+    }
+    else{
+      transactionType = "withdrawl"
+    }
+
+    messageBackground = 'var(--c-succ)';
+    document.querySelector(".message").style.opacity = '1';
+    document.querySelector(".message").style.backgroundColor = messageBackground;
+
+    messageTitle = "Success:";
+    message = `A ${transactionType} for ${document.querySelector("#t-amount").value} was completed.` ;
+
+    //-- update status accordingly
+    document.querySelector("#message-title").textContent = messageTitle;
+    document.querySelector("#message-results").textContent = message;
+    
+    
+    //-- erase content from fields
+    document.querySelector("#t-name").value = "";
+    document.querySelector("#t-amount").value = "";
+
+    setTimeout(() => { 
+      document.querySelector(".message").classList.add("fade-out");
+    }, 3000);
+
+    setTimeout(() => { 
+      document.querySelector(".message").style.opacity = '0';
+      document.querySelector(".message").classList.remove("fade-out");
+      document.querySelector(".message").style.backgroundColor = "white";
+      document.querySelector("#close-message").style.cursor = "default";
+    }, 3000);
+    
   }
 
-  if(!results.value){ 
-    //-- update message saying missing info
-  }
 
-  document.querySelector("#t-name").value = "";
-  document.querySelector("#t-amount").value = "";
-  document.querySelector(".form .error").textContent = "";
-  document.querySelector(".form .success").textContent = "test";
+
   
 }
 
@@ -72,10 +156,10 @@ function populateTable() {
     // create and populate a table row
     let tr = document.createElement("tr");
     tr.innerHTML = `
+    <td>${get_DateFormatted(transaction.date)}</td>
       <td>${transaction.name}</td>
       <td>${transactionType}</td>
       <td>$ ${transaction.value}</td>
-      <td>${get_DateFormatted(transaction.date)}</td>
       <td>${get_TimeFormatted(transaction.date)}</td>
       <td>${get_TimePassed(transaction.date)}</td>
     `;
@@ -87,11 +171,11 @@ function populateTable() {
 function sendTransaction(isAdding) {
   let nameEl = document.querySelector("#t-name");
   let amountEl = document.querySelector("#t-amount");
-  let errorEl = document.querySelector(".form .error");
+  let errorEl = document.querySelector("#message-results");
 
-  // validate form
+  // validate failed send msg
   if (nameEl.value === "" || amountEl.value === "") {
-    errorEl.textContent = "Missing Information";
+    updateForm(null)
     return;
   }
 
@@ -139,7 +223,7 @@ function sendTransaction(isAdding) {
   .catch(err => {
     // fetch failed, so save in indexed db
     saveRecord(transaction);
-    // clear form
+    // throw error
     updateForm(err);
   });
 }
@@ -150,4 +234,11 @@ document.querySelector("#add-btn").onclick = function() {
 
 document.querySelector("#sub-btn").onclick = function() {
   sendTransaction(false);
+};
+
+//-- close the notification is X is clicked
+document.querySelector("#close-message").onclick = function() {
+  document.querySelector(".message").classList.remove("fade-out");
+  document.querySelector("#close-message").style.cursor = "default";
+  document.querySelector(".message").style.opacity = "0";
 };

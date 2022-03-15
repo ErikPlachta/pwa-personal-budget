@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
-  <title>Budget Tracker - PWA - Erik Plachta</title>
+  <title>My Budget - PWA - Erik Plachta</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="icon" type="image/png" href="icons/favicon-16x16.png">
   
@@ -22,42 +22,48 @@
 <body>
 
   <header id="navbar">
-    
-    
 
     <a id="logo" href="#top">
       <img alt="Budget Tracker App" class="logo" id="logo-img" src="icons/logo.png" />
-      Budget Tracker  
+      My Budget
     </a>
     
     <nav id="navbar-right">
-      <a href="#record-transaction">Record</a>
+      <a href="#about">About</a>
       <a href="#balance-timeline">Timeline</a>
       <a href="#transaction-details">Details</a>
-      <a href="#about">About</a>
     </nav>
-
   </header>
-
+  
+  
+  <section class="toolbar" id="toolbar">
+    <h2 class="total" id='balance'>Balance: $<span id="total">0</span></h2>
+    <!-- <button id="clear-btn"><i class="fa fa-trash buttons"></i>Clear Balance</button> -->
+  </section>
+  
   <main id="top">
-
-    <section class="anchor" id="record-transaction">
-      <h2>Record Transaction</h2>
-      <div class="toolbar">
-        <div class="total">Balance: $<span id="total">0</span></div>
-        <button id="clear-btn"><i class="fa fa-trash buttons"></i>Clear Balance</button>
-      </div>
-
-      <div class="form">
-        <input type="text" id="t-name" placeholder="Enter a description" />
-        <input type="number" min="1" id="t-amount" placeholder="Enter an amount" oninput="validity.valid||(value='');"/>
-        <button id="add-btn"><i class="fa fa-plus buttons"></i>Deposit</button>
-        <button id="sub-btn"><i class="fa fa-minus"></i>Withdraw</button>
-        <div class="message">
-          <p class="error"></p>
-          <p class="success"></p>
+    <section class="message" id="message">
+      
+        <div>
+          <span id="message-title"></span>
+          <span id="message-results"></span>
         </div>
-      </div>
+        <span id="close-message">X</span>
+      
+    </section>
+    
+    <section  class="anchor" id="about">
+      <article>
+        <h2>About</h2>
+        <p>
+          Hello! My name is Erik Plachta, and I'm a full-stack developer. I've built
+          this project as a proof-of-concept PWA web-app demonstrating the use of
+          Service Workers and IndexedDB to create a seamless user experience in which
+          performance is not affected by the users network connection.
+        </p>
+        <hr>
+        <p>If you want to learn more about this project, <a id="github" href="https://github.com/ErikPlachta/pwa-personal-budget">check out the repo here!</a></p>
+      </article>
     </section>
     
     <section class="anchor" id="balance-timeline">
@@ -65,17 +71,15 @@
       <canvas id="myChart"></canvas>
     </section>
     
-    
-    
-    <section class="anchor" id="transaction-details">
+    <section class="anchor transactions" id="transaction-details">
       <h2>Transaction Details</h2>
-      <div class="transactions">
+      <div>
         <table>
           <thead>
+            <th>Date</th>
             <th>Description</th>
             <th>Type</th>
             <th>Amount</th>
-            <th>Date</th>
             <th>Time</th>
             <th>Age</th>
           </thead>
@@ -84,11 +88,21 @@
       </div>
     </section>
 
-    <section id="about">
-      <h2>About</h2>
-      <div>This is a Concept App</div>
-    </section>
-  </main#>
+
+    <footer>
+      <h2>Record Transaction</h2>
+      <div class="form">
+        <input type="text" id="t-name" placeholder="Enter a description.." />
+        <input type="number" min="1" id="t-amount" placeholder="$" oninput="validity.valid||(value='');"/>
+        
+        
+        <button id="add-btn"><i class="fa fa-plus buttons"></i> Deposit</button>
+        <button id="sub-btn"><i class="fa fa-minus"></i> Withdraw</button>
+        
+      </div>
+    </footer>
+  </main>
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -105,10 +119,6 @@
           .catch(error => console.log("//-- index.html - Service Worker registration failed:", error));
       }
     })();
-
-  //   window.addEventListener("hashchange", function () {
-  //     window.scrollTo(window.scrollX, window.scrollY - 100);
-  // });
   </script>
 </body>
 </html>
