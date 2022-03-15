@@ -1,3 +1,5 @@
+@import "animations.css";
+
 :root {
 
   /*                 TESTING              */
@@ -37,7 +39,8 @@
   --c-t: rgb(0, 105, 140); /* link hovered */
   --c-accent: rgb(255, 205, 65);
   --c-accent-faded: rgba(255, 205, 65,.5);
-  --c-warn: rgba(186, 24, 27,.9);
+  --c-warn: rgba(186, 24, 27,1);
+  --c-succ: rgba(21, 139, 220,1);
 
   --c-body: rgb(249, 249, 249);
   --c-section: rgb(254, 253, 255);
@@ -250,25 +253,26 @@ img.logo {
 
 
 .message{
+  opacity: 0;
   position: fixed;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  background: var(--c-warn);
+  /* background: var(--c-warn); */
   box-shadow: var(--ts-B-09);
   
   width: 100%;
   margin: 0;
   padding: 0;
-  top: 0;
-  height: 3rem;
+  bottom: 130px;
+  min-height: 2rem;
   align-items: center;
   font-size: var(--fs-400);
   /* top: 130px; */
   z-index: 1000;
 
-  transition: var(--t-nav);
+  transition: 1s;
 }
 
 .message div{
@@ -282,10 +286,12 @@ img.logo {
   font-weight: var(--fw-500);
 }
 
+
+
 #close-message{
   float: right;
   margin: .125rem .5rem;
-  cursor: pointer;
+  cursor:default;
   font-style: bold;
   color: white;
 }

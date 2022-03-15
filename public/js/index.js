@@ -25,42 +25,95 @@ fetch("/api/transaction")
 
 function updateForm(results) {
   
+  //-- allow to close 
+  document.querySelector("#close-message").style.cursor = "pointer";
+
+  // if(document.querySelector(".message").classList.contains("fade-out")) {
+  //   console.log("//-- contains it remove it")
+  //   document.querySelector(".message").classList.add("remove-animation");
+  //   document.querySelector(".message").classList.remove("remove-animation");
+  // }
+
+  //-- Define defaults
+  let messageBackground = '';
+  let messageTitle = '';
+  let message = '';
+  
   //-- update message saying missing info
   if(results == null){ 
+    
 
-    let messageBackground = 'var(--c-succ';
-    let messageTitle = '';
-    let message = '';
-
+    //-- verify is missing description
     if(document.querySelector("#t-name").value == ""){
-      console.log("no description");
       messageTitle = "Warning:";
       messageBackground = "var(--c-warn)";
       message = "Must include a transaction description!";
     }
     
+    //-- verify is missing amount
     if(document.querySelector("#t-amount").value == ""){
       messageTitle = "Warning:";
       messageBackground = "var(--c-warn)";
       message = message + " Must include an amount!";
     }
 
+    
+
+    //-- update status accordingly
     document.querySelector("#message-title").textContent = messageTitle;
     document.querySelector("#message-results").textContent = message;
-    return;
+    document.querySelector(".message").style.opacity = '1';
+    document.querySelector(".message").style.backgroundColor = messageBackground;
+
+    setTimeout(() => { 
+      document.querySelector(".message").classList.add("fade-out");
+    }, 3000);
+    // document.querySelector(".message").style.animation="fade-out";
+    // document.querySelector(".message").style.animation="slidefadeinout";
+    // document.querySelector(".message").style.opacity="1";
+  
+    //-- fade out
+    setTimeout(() => { 
+      document.querySelector(".message").style.opacity = '0';
+      document.querySelector(".message").classList.remove("fade-out");
+      document.querySelector(".message").style.backgroundColor = "white";
+      document.querySelector("#close-message").style.cursor = "default";
+    }, 3000);
+  }
+  
+  else {
+    
+
+    messageBackground = 'var(--c-succ)';
+    document.querySelector(".message").style.opacity = '1';
+    document.querySelector(".message").style.backgroundColor = messageBackground;
+
+    messageTitle = "Success:";
+    message = "Add";
+    //-- update status accordingly
+    document.querySelector("#message-title").textContent = messageTitle;
+    document.querySelector("#message-results").textContent = message;
+    
+    
+    //-- erase content from fields
+    document.querySelector("#t-name").value = "";
+    document.querySelector("#t-amount").value = "";
+
+    setTimeout(() => { 
+      document.querySelector(".message").classList.add("fade-out");
+    }, 3000);
+
+    setTimeout(() => { 
+      document.querySelector(".message").style.opacity = '0';
+      document.querySelector(".message").classList.remove("fade-out");
+      document.querySelector(".message").style.backgroundColor = "white";
+      document.querySelector("#close-message").style.cursor = "default";
+    }, 3000);
+    
   }
 
 
-  if(results.value > 0){ 
-    //-- update with msg saying deposit
-  }
-  if(results.value < 0){ 
-    //-- update with msg saying withdraw
-  }
 
-  document.querySelector("#t-name").value = "";
-  document.querySelector("#t-amount").value = "";
-  document.querySelector("#message-results").textContent = "";
   
 }
 
@@ -171,4 +224,11 @@ document.querySelector("#add-btn").onclick = function() {
 
 document.querySelector("#sub-btn").onclick = function() {
   sendTransaction(false);
+};
+
+//-- close the notification is X is clicked
+document.querySelector("#close-message").onclick = function() {
+  document.querySelector(".message").classList.remove("fade-out");
+  document.querySelector("#close-message").style.cursor = "default";
+  document.querySelector(".message").style.opacity = "0";
 };
