@@ -6,14 +6,14 @@ performance is not affected by the users network connection.
 
 ---
 
-## Under Development - 03/11/2022 #EP
+## [Deployed on Heroku](https://erikplachta-budget-pwa.herokuapp.com/#transaction-details)
 
-This is actively under development.
+> Check it out live, here 👆🏼!
 
 ## Contributors
 
-[Xandromus](https://www.github.com/Xandromus)
-> Built the base-content of the code as a starting point for the concept.
-
 [Erik Plachta](https://www.github.com/erikplachta)
-> Reviewed and then rebuilt all of the base content.
+> Redesigned everything, and built out a fully functional App
+
+[Xandromus](https://www.github.com/Xandromus)
+> Built rudimentary starter-content of the code as a starting point for the concept.
