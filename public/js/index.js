@@ -81,15 +81,25 @@ function updateForm(results) {
     }, 3000);
   }
   
+  //-- otherwise success
   else {
     
+    let transactionType = '';
+
+    if(results.value > 0 ){
+      transactionType = "deposit"
+    }
+    else{
+      transactionType = "withdrawl"
+    }
 
     messageBackground = 'var(--c-succ)';
     document.querySelector(".message").style.opacity = '1';
     document.querySelector(".message").style.backgroundColor = messageBackground;
 
     messageTitle = "Success:";
-    message = "Add";
+    message = `A ${transactionType} for ${document.querySelector("#t-amount").value} was completed.` ;
+
     //-- update status accordingly
     document.querySelector("#message-title").textContent = messageTitle;
     document.querySelector("#message-results").textContent = message;
@@ -163,7 +173,7 @@ function sendTransaction(isAdding) {
   let amountEl = document.querySelector("#t-amount");
   let errorEl = document.querySelector("#message-results");
 
-  // validate form
+  // validate failed send msg
   if (nameEl.value === "" || amountEl.value === "") {
     updateForm(null)
     return;
@@ -213,7 +223,7 @@ function sendTransaction(isAdding) {
   .catch(err => {
     // fetch failed, so save in indexed db
     saveRecord(transaction);
-    // clear form
+    // throw error
     updateForm(err);
   });
 }
