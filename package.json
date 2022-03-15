@@ -1,34 +1,33 @@
 {
-  "name": "pwa-personal-budget",
-  "version": "0.1.0",
-  "description": "A Budget concept PWA demonstrating a seamless user experience no matter the users network connection. Hosted on Heroku, running a Node/express.js server, no SQL Database with MongoDB.",
+  "name": "budget-app",
+  "version": "1.0.0",
+  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "watch": "watchdog",
-    "seed": "node seeds/seed",
-    "dev": "lite-server"
+    "dev": "lite-server",
+    "watch": "nodemon server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ErikPlachta/pwa-personal-budget.git"
+    "url": "git+https://github.com/coding-boot-camp/unit18hw.git"
   },
-  "author": "Erik plachta",
+  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ErikPlachta/pwa-personal-budget/issues"
+    "url": "https://github.com/coding-boot-camp/unit18hw/issues"
   },
-  "homepage": "https://github.com/ErikPlachta/pwa-personal-budget#readme",
+  "homepage": "https://github.com/coding-boot-camp/unit18hw#readme",
   "dependencies": {
     "compression": "^1.7.4",
     "express": "^4.17.1",
-    "jquery": "^3.6.0",
     "mongoose": "^5.5.15",
     "morgan": "^1.9.1"
   },
   "devDependencies": {
+    "dotenv": "^16.0.0",
     "lite-server": "^2.6.1",
-    "watchdog": "^0.8.17"
+    "nodemon": "^2.0.15"
   }
 }

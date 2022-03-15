@@ -1,0 +1,30 @@
+{
+    "name" : "My Budget PWA",
+    "short_name" : "My Budget",
+    "description" : "A Budget Tracker PWA Concept App by Erik Plachta",
+    "scope" : "/index.html",
+    "id" : "My-Budget-PWA",
+    "background_color" : "rgb(249,249,249)",
+    "theme_color" : "#062942",
+    "start_url" : "/index.html",
+    "display" : "standalone",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src":"/icons/apple-touch-icon.png",
+            "sizes":"180x180",
+            "type":"image/png"
+        },
+        {
+            "src":"/icons/android-chrome-192x192.png",
+            "sizes":"192x192",
+            "type":"image/png"
+        },
+        {
+            "src":"/icons/android-chrome-512x512.png",
+            "sizes":"512x512",
+            "type":"image/png"
+        }
+     
+    ]
+}

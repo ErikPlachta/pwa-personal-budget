@@ -1,24 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title>My Budget - PWA - Erik Plachta</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="icons/favicon-16x16.png">
+  
+  <!-- Manifest File link -->
+  <link rel="manifest" href="manifest.json">
 
-    <!-- Onboard Service Worker -->
-    <script src="./assets/js/script.js" ></script>
+  <script src="js/idb.js"></script> <!-- for loading offline content if needed -->
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  
+  
 </head>
 <body>
+
+  <header id="navbar">
+
+    <a id="logo" href="#top">
+      <img alt="Budget Tracker App" class="logo" id="logo-img" src="icons/logo.png" />
+      My Budget
+    </a>
     
-    <script>
-        (function() {
-          if("serviceWorker" in navigator) { // see if serviceWorker exists on the global navigator object.
-            navigator.serviceWorker.register("./service-worker.js")
-              .then(() => console.log("Service Worker registered successfully."))
-              .catch(error => console.log("Service Worker registration failed:", error));
-          }
-        })();
-      </script>
+    <nav id="navbar-right">
+      <a href="#about">About</a>
+      <a href="#balance-timeline">Timeline</a>
+      <a href="#transaction-details">Details</a>
+    </nav>
+  </header>
+  
+  
+  <section class="toolbar" id="toolbar">
+    <h2 class="total" id='balance'>Balance: $<span id="total">0</span></h2>
+    <!-- <button id="clear-btn"><i class="fa fa-trash buttons"></i>Clear Balance</button> -->
+  </section>
+  
+  <main id="top">
+    <section class="message" id="message">
+      
+        <div>
+          <span id="message-title"></span>
+          <span id="message-results"></span>
+        </div>
+        <span id="close-message">X</span>
+      
+    </section>
+    
+    <section  class="anchor" id="about">
+      <article>
+        <h2>About</h2>
+        <p>
+          Hello! My name is Erik Plachta, and I'm a full-stack developer. I've built
+          this project as a proof-of-concept PWA web-app demonstrating the use of
+          Service Workers and IndexedDB to create a seamless user experience in which
+          performance is not affected by the users network connection.
+        </p>
+        <hr>
+        <p>If you want to learn more about this project, <a id="github" href="https://github.com/ErikPlachta/pwa-personal-budget">check out the repo here!</a></p>
+      </article>
+    </section>
+    
+    <section class="anchor" id="balance-timeline">
+      <h2>Balance Timeline</h2>
+      <canvas id="myChart"></canvas>
+    </section>
+    
+    <section class="anchor transactions" id="transaction-details">
+      <h2>Transaction Details</h2>
+      <div>
+        <table>
+          <thead>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Time</th>
+            <th>Age</th>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+
+    <footer>
+      <h2>Record Transaction</h2>
+      <div class="form">
+        <input type="text" id="t-name" placeholder="Enter a description.." />
+        <input type="number" min="1" id="t-amount" placeholder="$" oninput="validity.valid||(value='');"/>
+        
+        
+        <button id="add-btn"><i class="fa fa-plus buttons"></i> Deposit</button>
+        <button id="sub-btn"><i class="fa fa-minus"></i> Withdraw</button>
+        
+      </div>
+    </footer>
+  </main>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script type="module" src="js/chart.js"></script>
+  <script type="module" src="js/index.js"></script>
+  <script src="js/scroll.js"></script>
+  <script>
+    (async function() {
+      if("serviceWorker" in navigator) { // see if serviceWorker exists on the global navigator object.
+         await navigator.serviceWorker.register("./sw.js")
+          //-- TODO:: 03/12/2022 #EP || Remove console.logs and make UI interace instead
+          .then(() => console.log("//-- index.html - Service Worker registered successfully."))
+          .catch(error => console.log("//-- index.html - Service Worker registration failed:", error));
+      }
+    })();
+  </script>
 </body>
 </html>
